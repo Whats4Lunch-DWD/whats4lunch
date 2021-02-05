@@ -33,6 +33,30 @@ $f3->route('GET /',
   }
 );
 
+$f3->route('GET /restaurants',
+  function ($f3) {
+    $f3->set('html_title','Restaurants - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','restaurants.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+$f3->route('GET /sign-in',
+  function ($f3) {
+    $f3->set('html_title','Sign In - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','sign-in.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+$f3->route('GET /cart',
+  function ($f3) {
+    $f3->set('html_title','Cart - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','cart.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
 // When using GET, provide a form for the user to upload an image via the file input type
 $f3->route('GET /simpleform',
   function($f3) {
