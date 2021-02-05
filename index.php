@@ -27,8 +27,8 @@ $f3->set('UI','ui/');		// folder for View templates
 //home page (index.html) -- actually just shows form entry page with a different title
 $f3->route('GET /',
   function ($f3) {
-    $f3->set('html_title','Simple Example Home');
-    $f3->set('content','simpleHome.html');
+    $f3->set('html_title','Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','home.html');
     echo Template::instance()->render('layout.html');
   }
 );
