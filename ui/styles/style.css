@@ -4,5 +4,8 @@
 
 .hero {
     text-align: center;
+}
+
+p.title {
     color: #fff;
 }
