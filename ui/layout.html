@@ -8,13 +8,18 @@
    <body>
       <header>
          <img src="{{@BASE}}/ui/images/logo.png" />
+         <ul>
+            <li><a href="{{@BASE}}">Home</a></li>
+            <li><a href="{{@BASE}}/restaurants/">Restaurants</a></li>
+            <li><a href="{{@BASE}}/sign-in/">Sign In</a></li>
+            <li><a href="{{@BASE}}/cart/">Cart</a></li>
+         </ul>
       </header>
-      <ul>
-         <li><a href="{{@BASE}}">Home</a></li>
-         <li><a href="{{@BASE}}/restaurants/">Restaurants</a></li>
-         <li><a href="{{@BASE}}/sign-in/">Sign In</a></li>
-         <li><a href="{{@BASE}}/cart/">Cart</a></li>
-      </ul>
-      <include href="{{ @content }}" />
+      <main>
+         <include href="{{ @content }}" />
+         <footer>
+            Copyright &copy; 2021 Whats4Lunch. All Rights Reserved.
+         </footer>
+      </main>
    </body>
 </html>
