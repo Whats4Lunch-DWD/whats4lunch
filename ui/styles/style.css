@@ -1,3 +1,8 @@
 .myhero {
     background-image: url("../images/hero.png") !important;
 }
+
+.hero {
+    text-align: center;
+    color: #fff;
+}
