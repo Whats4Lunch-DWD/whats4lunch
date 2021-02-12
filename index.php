@@ -36,7 +36,15 @@ $f3->route('GET /',
 $f3->route('GET /restaurants',
   function ($f3) {
     $f3->set('html_title','Restaurants - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','restaurants.html');
+    $f3->set('content','restaurants/list.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+$f3->route('GET /menus',
+  function ($f3) {
+    $f3->set('html_title','Menus - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/list.html');
     echo Template::instance()->render('layout.html');
   }
 );
