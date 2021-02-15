@@ -35,9 +35,86 @@ $f3->route('GET /',
 
 $f3->route('GET /restaurants',
   function ($f3) {
-    $f3->set('html_title','Restaurants - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $controller = new RestaurantController;
+    $data = $controller->listRestaurants();
+    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/list.html');
     echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Add restaurants page.
+$f3->route('GET /restaurants/add',
+  function ($f3) {
+    $controller = new RestaurantController;
+    $data = $controller->getRestaurant();
+    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','restaurants/add.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Show restaurants Page
+$f3->route('GET /restaurants/show',
+  function ($f3) {
+    $controller = new RestaurantController;
+    $data = $controller->getRestaurant();
+    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','restaurants/show.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Update restaurants page.
+$f3->route('GET /restaurants/update',
+  function ($f3) {
+    $controller = new RestaurantController;
+    $data = $controller->getRestaurant();
+    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','restaurants/add.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Delete restaurants page.
+$f3->route('GET /restaurants/delete',
+  function ($f3) {
+    $controller = new RestaurantController;
+    $data = $controller->getRestaurant();
+    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','restaurants/delete.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Add a new restaurants
+$f3->route('POST /restaurants',
+  function ($f3) {
+    $controller = new RestaurantController;
+    $controller->addRestaurant($formdata);
+    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
+    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','restaurants/add_response.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Update an existing restaurants
+$f3->route('PUT /restaurants',
+  function ($f3) {
+    $controller = new RestaurantController;
+    $controller->updateRestaurant($formdata);
+    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
+    $f3->reroute('/restaurants');		// will show edited data (GET route)
+  }
+);
+
+// Delete an existing restaurants
+$f3->route('DELETE /restaurants',
+  function ($f3) {
+    $controller = new RestaurantController;
+    $controller->deleteRestaurant($f3->get('POST.toDelete'));	// in this case, delete selected data record
+    $f3->reroute('/restaurants');		// will show edited data (GET route)
   }
 );
 
@@ -48,6 +125,112 @@ $f3->route('GET /menus',
     echo Template::instance()->render('layout.html');
   }
 );
+
+$f3->route('GET /cart',
+  function ($f3) {
+    $f3->set('html_title','Cart - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/cart.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+/*
+// Todo. Create cartscontroller and update the front controller.
+// Show the List Carts page.
+$f3->route('GET /carts',
+  function ($f3) {
+    $controller = new CartsController;
+    $data = $controller->getData();
+    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/carts/list.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Add Cart page.
+$f3->route('GET /carts/add',
+  function ($f3) {
+    $controller = new CartsController;
+    $data = $controller->getData();
+    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/carts/add.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Show Cart Page
+$f3->route('GET /carts/show',
+  function ($f3) {
+    $controller = new CartsController;
+    $data = $controller->getData();
+    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/carts/show.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Update Cart page.
+$f3->route('GET /carts/update',
+  function ($f3) {
+    $controller = new CartsController;
+    $data = $controller->getData();
+    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/carts/add.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Show the Delete Cart page.
+$f3->route('GET /carts/delete',
+  function ($f3) {
+    $controller = new CartsController;
+    $data = $controller->getData();
+    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/carts/delete.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Add a new cart
+$f3->route('POST /carts',
+  function ($f3) {
+    $controller = new CartsController;
+    $controller->addCart($formdata);
+    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
+    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/carts/add_response.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+// Update an existing cart
+$f3->route('PUT /carts',
+  function ($f3) {
+    $controller = new CartsController;
+    $controller->updateCart($formdata);
+    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
+    $f3->reroute('/carts');		// will show edited data (GET route)
+  }
+);
+
+// Delete an existing cart
+$f3->route('DELETE /carts',
+  function ($f3) {
+    $controller = new CartsController;
+    $controller->deleteCart($f3->get('POST.toDelete'));	// in this case, delete selected data record
+    $f3->reroute('/carts');		// will show edited data (GET route)
+  }
+);
+
+$f3->route('GET /cart_items',
+  function ($f3) {
+    $f3->set('html_title','Cart Items - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','menus/cart_items/list.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+*/
+
 
 $f3->route('GET /sign-in',
   function ($f3) {
