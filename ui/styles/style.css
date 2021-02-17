@@ -10,6 +10,10 @@ p.title {
     color: #fff;
 }
 
+.media-content p.title {
+    color: #000 !important;
+}
+
 .searchbtn {
     margin: auto auto;
 }
