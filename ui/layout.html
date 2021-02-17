@@ -7,24 +7,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link href="{{@BASE}}/ui/styles/style.css" type="text/css" rel="stylesheet" />
   </head>
-  <body>
-      <header>
-         <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-               <a class="navbar-item" href="{{@BASE}}"><img src="{{@BASE}}/ui/images/logo.png" /></a>
-            </div>
-            <div class="navbar-menu">
-               <div class="navbar-end">
-                  <a class="navbar-item" href="{{@BASE}}">Home</a>
-                  <a class="navbar-item" href="{{@BASE}}/restaurants/">Restaurants</a>
-                  <a class="navbar-item" href="{{@BASE}}/sign-in/">Sign In</a>
-                  <a class="navbar-item" href="{{@BASE}}/cart/">Cart</a>
+   <body>
+      <div class="header">
+         <header class="container">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+               <div class="navbar-brand">
+                  <a class="navbar-item" href="{{@BASE}}"><img src="{{@BASE}}/ui/images/logo.png" /></a>
                </div>
-            </div>
-         </nav>
-      </header>
+               <div class="navbar-menu">
+                  <div class="navbar-end">
+                     <a class="navbar-item" href="{{@BASE}}">Home</a>
+                     <a class="navbar-item" href="{{@BASE}}/restaurants/">Restaurants</a>
+                     <a class="navbar-item" href="{{@BASE}}/sign-in/">Sign In</a>
+                     <a class="navbar-item" href="{{@BASE}}/cart/">Cart</a>
+                  </div>
+               </div>
+            </nav>
+         </header>
+      </div>
+      <include href="{{ @content }}" />
       <div class="container">
-         <include href="{{ @content }}" />
          <footer class="footer">
             Copyright &copy; 2021 Whats4Lunch. All Rights Reserved.
          </footer>
