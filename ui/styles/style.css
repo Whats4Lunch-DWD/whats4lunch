@@ -6,6 +6,17 @@
     text-align: center;
 }
 
+h1.title {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 49px;
+    /* identical to box height */
+    color: #000000;       
+}
+
 p.title {
     color: #fff;
 }
