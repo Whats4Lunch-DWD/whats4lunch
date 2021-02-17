@@ -1,1 +1,21 @@
 <h1>Restaurants</h1>
+
+<div class="columns">
+    <repeat group="{{ @records }}" value="{{ @record }}">
+        <div class="column is-one-third">
+            <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="{{ trim(@record.image) }} image">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">{{ trim(@record.restaurant_name) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </repeat>
+</div>
