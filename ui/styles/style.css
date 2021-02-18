@@ -1,5 +1,7 @@
 .myhero {
-    background-image: url("../images/hero.png") !important;
+    background: url("../images/hero.png") rgba(255, 0, 150, 0.3) !important;
+    background-size:cover;
+    background-blend-mode: multiply;
 }
 
 .hero {
