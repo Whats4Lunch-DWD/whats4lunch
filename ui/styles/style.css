@@ -60,4 +60,7 @@ span.sub-icon {
 span.sub-content {
     width: 300px;
     display: block;
+    text-align: center;
+    margin: auto auto;
+    color: #808080;
 }
