@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-h1.title {
+h2.title {
     text-align: center;
     font-family: Open Sans;
     font-style: normal;
@@ -14,7 +14,16 @@ h1.title {
     font-size: 36px;
     line-height: 49px;
     /* identical to box height */
-    color: #000000;       
+    color: ##221F20;       
+}
+
+h3.sub-title {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 38px;
+    color: #221F20;
 }
 
 p.title {
@@ -32,4 +41,10 @@ p.title {
 .content {
     background: url("../images/background.png");
     text-align: center;
+}
+
+.core-values {
+    padding-top: 100px;
+    padding-bottom: 100px; 
+    height: 476px;
 }
