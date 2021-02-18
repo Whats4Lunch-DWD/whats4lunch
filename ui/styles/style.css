@@ -63,4 +63,9 @@ span.sub-content {
     text-align: center;
     margin: auto auto;
     color: #808080;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
 }
