@@ -8,6 +8,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link href="{{@BASE}}/ui/styles/style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+        <script>
+        function Cloud(){
+        $.ajax({
+        url: 'https://developers.onemap.sg/commonapi/search?searchVal=revenue&returnGeom=Y&getAddrDetails=Y&pageNum=1',
+        success: function(result){
+            //Set result to a variable for writing
+            var TrueResult = JSON.stringify(result);
+            document.write(TrueResult);
+            }});
+        }
+
+        Cloud();
+      </script>
   </head>
    <body>
       <div class="header">
