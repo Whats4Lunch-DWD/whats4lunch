@@ -56,3 +56,8 @@ span.sub-icon {
     margin: auto auto;
     display: block;
 }
+
+span.sub-content {
+    width: 300px;
+    display: block;
+}
