@@ -47,7 +47,7 @@ p.title {
 .core-values {
     padding-top: 100px;
     padding-bottom: 100px; 
-    height: 476px;
+    height: auto;
     text-align: center;
 }
 
