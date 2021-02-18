@@ -31,4 +31,5 @@ p.title {
 
 .content {
     background: url("../images/background.png");
+    text-align: center;
 }
