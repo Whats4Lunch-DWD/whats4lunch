@@ -24,6 +24,7 @@ span.sub-title {
     font-size: 28px;
     line-height: 38px;
     color: #221F20;
+    display: block;
 }
 
 p.title {
@@ -53,4 +54,5 @@ p.title {
 span.sub-icon {
     text-align: center;
     margin: auto auto;
+    display: block;
 }
