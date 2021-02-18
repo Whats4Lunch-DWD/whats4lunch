@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link href="{{@BASE}}/ui/styles/style.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="https://cdn.rawgit.com/mattmezza/bulmahead/master/dist/bulmahead.bundle.js"></script>
+
         <script>
         function Cloud(){
         $.ajax({
@@ -20,7 +22,9 @@
             }});
         }
 
-        Cloud();
+        let st = Cloud();
+        bulmahead('location', 'location-menu', v => new Promise((rs,rj) => rs(st.filter(s=>s.startsWith(v))), 200, 2);
+
       </script>
   </head>
    <body>

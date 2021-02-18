@@ -5,7 +5,12 @@
             <p>
                 <div class="columns field">
                     <div class="column control">
-                        <input class="input" placeholder="Enter your address or postal code." id="location" name="location" type="text" />
+                        <div class="dropdown">
+                            <div class="dropdown-trigger">
+                                <input id="location" class="input" type="text" placeholder="Enter your address or postal code." aria-haspopup="true" aria-controls="prova-menu">
+                            </div>
+                            <div class="dropdown-menu" id="location-menu" role="menu" />
+                        </div>
                     </div>
                     <div class="column control">
                         <input class="input" placeholder="Enter a dish you'd like. We give you 3 choices." id="query" name="query" type="text" />
