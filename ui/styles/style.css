@@ -28,3 +28,7 @@ p.title {
 .searchbtn {
     margin: auto auto;
 }
+
+.content {
+    background: image("../images/background.png");
+}
