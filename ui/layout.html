@@ -45,10 +45,10 @@
                 }});
          }
  
-         $('#location').keypress(function() {
+         $('#location').keyup(function() {
           console.log("onchange working");
           var query = $('#location').val();
-          console.log("seach for"+query);
+          console.log("seach for "+query);
           getAddrSG(query);
          });
          
