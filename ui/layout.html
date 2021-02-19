@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link href="{{@BASE}}/ui/styles/style.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
    <body>
       <div class="header">
@@ -36,6 +37,7 @@
       </footer>
       <script>
          function getAddrSG(query){
+            var locations=[];
           $.ajax({
           url: 'https://developers.onemap.sg/commonapi/search?searchVal='+query+'&returnGeom=Y&getAddrDetails=Y&pageNum=1',
           success: function(result){
@@ -44,6 +46,10 @@
                 console.log(results);
                 $.each(result.results, function(index, value) {
                    console.log("index is "+index+", valus is "+JSON.stringify(value.ADDRESS));
+                   locations.push(value.ADDRESS);
+                   $( "#location" ).autocomplete({
+                        source: locations
+                     });
                 });
 
                 }});
