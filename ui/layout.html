@@ -22,6 +22,7 @@
         }
 
         $('#location').change(function() {
+         console.log("onchange working");
          var query = $('#location').val();
          getAddrSG(query);
         });
