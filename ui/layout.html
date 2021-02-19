@@ -45,7 +45,7 @@
                 }});
          }
  
-         $('#location').change(function() {
+         $('#location').keypress(function() {
           console.log("onchange working");
           var query = $('#location').val();
           getAddrSG(query);
