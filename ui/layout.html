@@ -42,9 +42,10 @@
                 //Set result to a variable for writing
                 var results = JSON.stringify(result.results);
                 console.log(results);
-                $.each(result.results), function(index, value) {
+                $.each(result.results, function(index, value) {
                    console.log("index is "+index+", valus is "+value);
-                }
+                });
+                
                 }});
          }
  
