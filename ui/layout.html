@@ -43,7 +43,8 @@
                 var locations = null;
                 var results = JSON.stringify(result);
                   //console.log(results);
-                  locations = results["results"]["ADDRESS"];
+                var x = JSON.stringify(results["results"])
+                locations = x["ADDRESS"];
 
                   return locations;
                 }});
