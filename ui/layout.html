@@ -40,8 +40,7 @@
           url: 'https://developers.onemap.sg/commonapi/search?searchVal='+query+'&returnGeom=Y&getAddrDetails=Y&pageNum=1',
           success: function(result){
                 //Set result to a variable for writing
-                var locations = result["results"];
-                  return locations;
+                return result;
                 }});
          }
  
