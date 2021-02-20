@@ -71,3 +71,7 @@ span.sub-content {
     font-size: 16px;
     line-height: 22px;
 }
+
+.home-select {
+    width: 100%;
+}
