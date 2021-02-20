@@ -72,6 +72,6 @@ span.sub-content {
     line-height: 22px;
 }
 
-.home-select {
-    width: 100%;
+select.home-select {
+    width: 30em imp !important;
 }
