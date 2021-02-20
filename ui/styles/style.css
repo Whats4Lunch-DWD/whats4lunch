@@ -75,3 +75,17 @@ span.sub-content {
 select.home-select {
     width: 30em !important;
 }
+
+footer.footer {
+    background: #F9F8F7;
+}
+
+footer.footer .container {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 44px;
+    /* identical to box height, or 137% */
+    color: rgba(255, 255, 255, 0.7);
+}
