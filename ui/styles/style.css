@@ -77,6 +77,7 @@ select.home-select {
 }
 
 footer.footer {
+    padding: 2rem 1.5rem 2em im !important;
     background: #221F20;
 }
 
