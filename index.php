@@ -48,13 +48,13 @@ $f3->route('POST /',
     } else {
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
-      $f3->set('sum_of_records',$f3->get('DB')->exec("select count(distinct restaurant_id) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
-      //$max_records = $f3->get('sum_of_records');
-      $max_records = $f3->get('DB')->exec("select count(distinct restaurant_id) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria);
+      $f3->set('sum_of_records',$f3->get('DB')->exec("select count(distinct restaurant_id) as max_records from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
+      $max_records = $f3->get('sum_of_records');
+      //$max_records = $f3->get('DB')->exec("select count(distinct restaurant_id) as max_records from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria);
 
       print_r($max_records);
 
-      $random = random_int(1,$max_records);
+      $random = random_int(1,$max_records['max_records']);
 
       $criteria = "(dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%') and restaurants.id=".$random;
       $f3->set('results',$f3->get('DB')->exec("select distinct restaurant_id, restaurant_name from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
