@@ -27,6 +27,7 @@ class RestaurantController {
 	}
 
 	public function findRestaurants($options) {
+		print_r($options);
 		$list = $this->mapper->find();
 		return $list;
 	}
