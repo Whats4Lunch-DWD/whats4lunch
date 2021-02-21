@@ -39,6 +39,7 @@ $f3->route('POST /',
     $query = $f3->get('POST');
     $controller = new RestaurantController;
     $results = $controller->findRestaurants($query);
+    print_r($results);
     $f3->set('results',$results);		// set info in F3 variable for access in response template
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/search_response.html');
