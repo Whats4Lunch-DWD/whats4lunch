@@ -27,9 +27,8 @@ class RestaurantController {
 	}
 
 	public function findRestaurants($options) {
-		//$list = $this->mapper->find();
-		//return $list;
-		return $options;
+		$list = $this->mapper->find();
+		return $list;
 	}
 
 	public function updateRestaurant($data) {
