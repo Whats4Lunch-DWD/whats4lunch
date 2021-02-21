@@ -59,6 +59,36 @@
 </section>
 <section class="content">
     <div class="restaurants">
-        {{ @results }}
+        <h2>Results for {{ @query.diet }} {{ @query.query }} that contains no {{ @query.allergy }} near {{ @location }}</h2>
+        <check if="{{ @results }}">
+            <true>
+                <div class="columns">
+                    <repeat group="{{ @results }}" value="{{ @record }}">
+                        <div class="column is-one-third">
+                            <div class="card">
+                                <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <check if="{{ @record.image }}">
+                                        <true>
+                                            <img src="https://hazrulazhar.edinburgh.domains/whats4lunch/ui/images/restaurants/{{ trim(@record.image) }}" alt="{{ trim(@record.image) }} image">
+                                        </true>
+                                        <false>
+                                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="{{ trim(@record.image) }} image">
+                                        </false>
+                                    </check>
+                                </figure>
+                                </div>
+                                <div class="card-content">
+                                    <p class="title is-4">{{ trim(@record.restaurant_name) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </repeat>
+                </div>
+            </true>
+            <false>
+                No restaurants are available.
+            </false>
+        </check>
     </div>
 </section>
