@@ -42,8 +42,9 @@ $f3->route('POST /',
     if ($query["choicestyle"]=="3choices") {
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
-      //echo $criteria;
-      $f3->set('results',$f3->get('DB')->exec("select distinct restaurant_id, restaurant_name from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
+      $sql = "select distinct restaurant_id, restaurant_name from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria;
+      echo $sql;
+      $f3->set('results',$f3->get('DB')->exec($sql));
 
     } else {
       
