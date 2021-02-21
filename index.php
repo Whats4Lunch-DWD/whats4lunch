@@ -39,7 +39,7 @@ $f3->route('POST /',
   function ($f3) {
     $query = $f3->get('POST');
     $f3->set('query',$query);
-    if ($options["choicestyle"]=="3choices") {
+    if ($query["choicestyle"]=="3choices") {
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
       $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
@@ -51,7 +51,7 @@ $f3->route('POST /',
       //$max_records = $f3->get('sum_of_records');
       $max_records = $f3->get('DB')->exec("select count(*) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id");
 
-      print_r($max_records); exit;
+      print_r($max_records);
 
       $random = random_int(1,$max_records);
 
