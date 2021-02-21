@@ -28,21 +28,6 @@ class RestaurantController {
 		return $restaurant;
 	}
 
-	public function findRestaurantsBySearch($options) {
-		if ($options["choicestyle"]=="3choices") {
-
-			$criteria = "dish_name like '%".$options["query"]."%' or diet like '%".$options["diet"]."%' or allergen like '%".$options["allergy"]."%'";
-			$list = $this->menus_mapper->find($criteria,array("limit"=>3));
-			//print_r($dishes);
-			//$list = $this->mapper->find();
-			//$list = $this->menus_mapper->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria);
-		} else {
-			$criteria = "restaurant_id like '%%' and (dish_name like '%".$options["query"]."%' or diet like '%".$options["diet"]."%' or allergen like '%".$options["allergy"]."%')";
-			$dishes = $this->menus_mapper->find($criteria,array("group"=>"restaurant_id","limit"=>1));
-		}
-		return $list;
-	}
-
 	public function updateRestaurant($data) {
 		$this->mapper->save();									// save new record with these fields
 	}

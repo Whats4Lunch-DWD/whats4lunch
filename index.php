@@ -38,12 +38,21 @@ $f3->route('GET /',
 $f3->route('POST /',
   function ($f3) {
     $query = $f3->get('POST');
-    $controller = new RestaurantController;
-    $results = $controller->findRestaurantsBySearch($query);
     $f3->set('query',$query);
-    //$f3->set('results',$results);		// set info in F3 variable for access in response template
-    $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
-    $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
+    if ($options["choicestyle"]=="3choices") {
+      
+      $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
+      $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
+
+    } else {
+      
+      $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
+      $f3->set('sum_of_records',$f3->get('DB')->exec("select count(*) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
+
+      $criteria = "(dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%') and restaurants.id=rand(1,".$f3->get('sum_of_records').")";
+      $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
+
+    }
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/search_response.html');
     echo Template::instance()->render('layout.html');
