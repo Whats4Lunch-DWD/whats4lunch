@@ -30,8 +30,9 @@ class RestaurantController {
 
 	public function findRestaurantsBySearch($options) {
 		if ($options["choicestyle"]=="3choices") {
-			$criteria = "dish_name, diet, allergen, restaurant_id where dish_name like '%".$options["query"]."%' or diet like '%".$options["diet"]."%' or allergen like '%".$options["allergy"]."%'";
-			$dishes = $this->menus_mapper->select($criteria,array("group"=>"restaurant_id","limit"=>3));
+			$fields = "dish_name, diet, allergen, restaurant_id";
+			$criteria = "dish_name like '%".$options["query"]."%' or diet like '%".$options["diet"]."%' or allergen like '%".$options["allergy"]."%'";
+			$dishes = $this->menus_mapper->select($fields,$criteria,array("group"=>"restaurant_id","limit"=>3));
 			print_r($dishes);
 			$list = $this->mapper->find();
 		} else {
