@@ -48,7 +48,8 @@ $f3->route('POST /',
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
       $f3->set('sum_of_records',$f3->get('DB')->exec("select count(*) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
-      $max_records = $f3->get('sum_of_records');
+      //$max_records = $f3->get('sum_of_records');
+      $max_records = $f3->get('DB')->exec("select count(*) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id");
 
       print_r($max_records); exit;
 
