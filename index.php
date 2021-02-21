@@ -54,6 +54,8 @@ $f3->route('POST /',
       $criteria = "(dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%'";
       if ($query["allergy"]!="") {
         $criteria .= "and allergen not like '%".$query["allergy"]."%')";
+      } else {
+        $criteria .= ")";
       }
       $count_sql = "select count(distinct restaurant_id) as max_records from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria;
       //echo $sql;
