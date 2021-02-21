@@ -42,6 +42,7 @@ $f3->route('POST /',
     if ($query["choicestyle"]=="3choices") {
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
+      echo $criteria;
       $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
 
     } else {
