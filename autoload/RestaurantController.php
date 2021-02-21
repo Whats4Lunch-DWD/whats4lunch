@@ -26,6 +26,12 @@ class RestaurantController {
 		return $restaurant;
 	}
 
+	public function findRestaurants($options) {
+		//$list = $this->mapper->find();
+		//return $list;
+		return $options;
+	}
+
 	public function updateRestaurant($data) {
 		$this->mapper->save();									// save new record with these fields
 	}

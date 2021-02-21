@@ -33,6 +33,19 @@ $f3->route('GET /',
   }
 );
 
+// Add a new restaurants
+$f3->route('POST /',
+  function ($f3) {
+    $query = $f3->get('POST');
+    $controller = new RestaurantController;
+    $results = $controller->findRestaurants($query);
+    $f3->set('results',$results);		// set info in F3 variable for access in response template
+    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','restaurants/search_response.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
 $f3->route('GET /restaurants',
   function ($f3) {
     $controller = new RestaurantController;
