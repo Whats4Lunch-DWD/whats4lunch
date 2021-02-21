@@ -1,33 +1,35 @@
-<div class="main-content content container">
-    <h2 class="title">Restaurants</h2>
-    <check if="{{ @records }}">
-        <true>
-            <div class="columns">
-                <repeat group="{{ @records }}" value="{{ @record }}">
-                    <div class="column is-one-third">
-                        <div class="card">
-                            <div class="card-image">
-                            <figure class="image is-4by3">
-                                <check if="{{ @record.image }}">
-                                    <true>
-                                        <img src="https://hazrulazhar.edinburgh.domains/whats4lunch/ui/images/restaurants/{{ trim(@record.image) }}" alt="{{ trim(@record.image) }} image">
-                                    </true>
-                                    <false>
-                                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="{{ trim(@record.image) }} image">
-                                    </false>
-                                </check>
-                            </figure>
-                            </div>
-                            <div class="card-content">
-                                <p class="title is-4">{{ trim(@record.restaurant_name) }}</p>
+<div class="content">
+    <div class="main-content container">
+        <h2 class="title">Restaurants</h2>
+        <check if="{{ @records }}">
+            <true>
+                <div class="columns">
+                    <repeat group="{{ @records }}" value="{{ @record }}">
+                        <div class="column is-one-third">
+                            <div class="card">
+                                <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <check if="{{ @record.image }}">
+                                        <true>
+                                            <img src="https://hazrulazhar.edinburgh.domains/whats4lunch/ui/images/restaurants/{{ trim(@record.image) }}" alt="{{ trim(@record.image) }} image">
+                                        </true>
+                                        <false>
+                                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="{{ trim(@record.image) }} image">
+                                        </false>
+                                    </check>
+                                </figure>
+                                </div>
+                                <div class="card-content">
+                                    <p class="title is-4">{{ trim(@record.restaurant_name) }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </repeat>
-            </div>
-        </true>
-        <false>
-            No restaurants are available.
-        </false>
-    </check>
+                    </repeat>
+                </div>
+            </true>
+            <false>
+                No restaurants are available.
+            </false>
+        </check>
+    </div>
 </div>
