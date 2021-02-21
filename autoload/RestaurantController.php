@@ -27,7 +27,7 @@ class RestaurantController {
 	}
 
 	public function findRestaurants($options) {
-		print_r($options["choicestyle"]);
+		print_r($options);
 		if ($options["choicestyle"]=="3choices") {
 			$list = $this->mapper->find();
 		} else {
