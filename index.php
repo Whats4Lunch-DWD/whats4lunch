@@ -39,6 +39,9 @@ $f3->route('POST /',
   function ($f3) {
     $query = $f3->get('POST');
     $f3->set('query',$query);
+
+    print_r($query);
+
     if ($query["choicestyle"]=="3choices") {
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%'";
