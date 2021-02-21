@@ -42,22 +42,22 @@ $f3->route('POST /',
     if ($query["choicestyle"]=="3choices") {
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
-      echo $criteria;
-      $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
+      //echo $criteria;
+      $f3->set('results',$f3->get('DB')->exec("select distinct restaurant_id, restaurant_name from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
 
     } else {
       
       $criteria = "dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%'";
-      $f3->set('sum_of_records',$f3->get('DB')->exec("select count(*) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
+      $f3->set('sum_of_records',$f3->get('DB')->exec("select count(distinct restaurant_id) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
       //$max_records = $f3->get('sum_of_records');
-      $max_records = $f3->get('DB')->exec("select count(*) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id");
+      $max_records = $f3->get('DB')->exec("select count(distinct restaurant_id) from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria);
 
       print_r($max_records);
 
       $random = random_int(1,$max_records);
 
       $criteria = "(dish_name like '%".$query["query"]."%' and diet like '%".$query["diet"]."%' and allergen not like '%".$query["allergy"]."%') and restaurants.id=".$random;
-      $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria." group by restaurant_id"));
+      $f3->set('results',$f3->get('DB')->exec("select distinct restaurant_id, restaurant_name from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
 
     }
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
