@@ -44,7 +44,7 @@ p.title {
 .content {
     background: url("../images/background.png") -120px -120px;
     text-align: center;
-    margin-bottom: 0 im !important;
+    margin-bottom: 0 !important;
 }
 
 .core-values {
