@@ -40,7 +40,7 @@ $f3->route('POST /',
     $query = $f3->get('POST');
     $f3->set('query',$query);
 
-    print_r($query);
+    //print_r($query);
 
     if ($query["choicestyle"]=="3choices") {
       
