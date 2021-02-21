@@ -4,11 +4,13 @@
 
 class RestaurantController {
 	private $mapper;
+	private $menus_mapper;
 
 	public function __construct() {
 		global $f3;						// needed for $f3->get()
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"restaurants");	// create DB query mapper object
 																			// for the "restaurants" table
+		$this->menus_mapper = new DB\SQL\Mapper($f3->get('DB'),"menus");
     }
     
     public function addRestaurant($data) {
@@ -26,11 +28,15 @@ class RestaurantController {
 		return $restaurant;
 	}
 
-	public function findRestaurants($options) {
+	public function findRestaurantsBySearch($options) {
 		if ($options["choicestyle"]=="3choices") {
+			$criteria = "dish_name like \"%".$options["query"]."%\", diet like \"%".$options["diet"]."%\", allergen like \"%".$options["allergen"]."%\"";
+			$dishes = $this->menus_mapper->find($criteria,array("group"=>"restaurant_id","limit"=>3));
+			print_r($dishes);
 			$list = $this->mapper->find();
 		} else {
-			$list = $this->mapper->load(['id=?', rand(1,3)]);
+			$criteria = "dish_name like \"%".$options["query"]."%\", diet like \"%".$options["diet"]."%\", allergen like \"%".$options["allergen"]."%\"";
+			$dishes = $this->menus_mapper->find($criteria,array("group"=>"restaurant_id","limit"=>1));
 		}
 		return $list;
 	}
