@@ -42,6 +42,7 @@ $f3->route('POST /',
     $results = $controller->findRestaurantsBySearch($query);
     $f3->set('query',$query);
     //$f3->set('results',$results);		// set info in F3 variable for access in response template
+    $criteria = "dish_name like '%".$query["query"]."%' or diet like '%".$query["diet"]."%' or allergen like '%".$query["allergy"]."%'";
     $f3->set('results',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/search_response.html');
