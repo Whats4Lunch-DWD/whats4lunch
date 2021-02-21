@@ -7,8 +7,7 @@ class RestaurantController {
 	private $menus_mapper;
 
 	public function __construct() {
-		global $f3;						// needed for $f3->get()
-		global $db;
+		global $f3;
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"restaurants");	// create DB query mapper object
 																			// for the "restaurants" table
 		$this->menus_mapper = new DB\SQL\Mapper($f3->get('DB'),"menus");
@@ -37,7 +36,7 @@ class RestaurantController {
 			//print_r($dishes);
 			//$list = $this->mapper->find();
 			//$this->menus_mapper->exec("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';");
-			$list = $db->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria);
+			$list = $f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria);
 		} else {
 			$criteria = "restaurant_id like '%%' and (dish_name like '%".$options["query"]."%' or diet like '%".$options["diet"]."%' or allergen like '%".$options["allergy"]."%')";
 			$dishes = $this->menus_mapper->find($criteria,array("group"=>"restaurant_id","limit"=>1));
