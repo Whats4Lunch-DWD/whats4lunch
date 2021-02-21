@@ -16,6 +16,7 @@ $f3->set('AUTOLOAD','autoload/;../../AboveWebRoot/autoload/');
 $db = DatabaseConnection::connect();		// defined as autoloaded class in AboveWebRoot/autoload/
 $f3->set('DB', $db);
 $f3->get('DB')->exec("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';");
+$f3->set('MR',$f3->get('DB')->exec("select * from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria));
 
 $f3->set('DEBUG',3);		// set maximum debug level
 $f3->set('UI','ui/');		// folder for View templates
@@ -41,7 +42,9 @@ $f3->route('POST /',
     $controller = new RestaurantController;
     $results = $controller->findRestaurantsBySearch($query);
     $f3->set('query',$query);
-    $f3->set('results',$results);		// set info in F3 variable for access in response template
+    //$f3->set('results',$results);		// set info in F3 variable for access in response template
+    $MR = $f3->get('MR');
+    $f3->set('results',$MR);
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/search_response.html');
     echo Template::instance()->render('layout.html');
