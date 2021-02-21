@@ -61,9 +61,9 @@ $f3->route('POST /',
       //echo $sql;
       $f3->set('sum_of_records',$f3->get('DB')->exec($count_sql));
       $max_records = $f3->get('sum_of_records');
-      print_r($max_records);
+      print_r($max_records["0"]["max_records"]);
       
-      $criteria .= " restaurants.id=".random_int(1,$max_records["max_records"]);
+      $criteria .= " restaurants.id=".random_int(1,$max_records["0"]["max_records"]);
       $sql = "select distinct restaurant_id, restaurant_name, image from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria;
       $f3->set('results',$f3->get('DB')->exec($sql));
     }
