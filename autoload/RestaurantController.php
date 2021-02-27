@@ -24,7 +24,8 @@ class RestaurantController {
 	}
 
 	public function getRestaurant($id) {
-		$restaurant = $this->mapper->load(['id=?', $id]);				// load DB record matching the given ID
+		$restaurant = $this->mapper->load(['id=?', $id]);
+		print_r($restaurant);			// load DB record matching the given ID
 		return $restaurant;
 	}
 
