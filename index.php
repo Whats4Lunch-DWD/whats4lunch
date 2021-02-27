@@ -9,7 +9,7 @@
 // classes defined in autoloaded definitions
 
 $f3 = require('../../AboveWebRoot/fatfree-master-3.7/lib/base.php');
-$cart = new \Basket();
+$cart = new \Basket;
 
 // autoload Controller class(es) and anything hidden above web root, e.g. DB stuff
 $f3->set('AUTOLOAD','autoload/;../../AboveWebRoot/autoload/');
