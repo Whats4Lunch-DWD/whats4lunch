@@ -29,6 +29,8 @@ class RestaurantController {
 		$restaurant = $this->mapper->load(['id=?', $id]);
 		$menu = $this->menus_mapper->find(['restaurant_id=?', $id]);
 
+		echo "<pre>"; print_r($menu); echo "</pre>";
+
 		$restaurant_menu = array("restaurant"=>$restaurant, "menu"=>$menu);
 		return $restaurant_menu;
 	}
