@@ -5,6 +5,7 @@
             <true>
                 <set ctr="{{ 0 }}" />
                 <repeat group="{{ @records }}" value="{{ @record }}" counter="{{ @ctr }}">
+                    {{ @ctr }}
                     <check if="{{ @ctr%3 }}">
                         <false>
                             <div class="columns">
