@@ -4,11 +4,14 @@
         <check if="{{ @records.results }}">
             <true>
                 <set ctr="{{ 0 }}" />
+                <check if="{{ @ctr }}">
+                    <true></true>
+                    <false><div class="columns"></false>
+                </check>
                 <repeat group="{{ @records.results }}" value="{{ @record }}" counter="{{ @ctr }}">
-                    {{ @ctr }}%3{{ @ctr%3 }}
                     <check if="{{ @ctr%3 }}">
                         <true></true>
-                        <false><div class="columns"></false>
+                        <false></div><div class="columns"></false>
                     </check>
                         <div class="column is-one-third">
                             <div class="card">
@@ -29,9 +32,8 @@
                                 </div>
                             </div>
                         </div>
-                        <check if="{{ @ctr%3 }}">
-                            <true></true>
-                            <false></div></false>
+                        <check if="{{ @records.total_results == @ctr }}">
+                            <true></div></true>
                         </check>
                 </repeat>
             </true>
