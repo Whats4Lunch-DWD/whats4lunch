@@ -1,7 +1,12 @@
 <section class="content">
     <div class="main-content container">
-        <h2>{{ @result.restaurant_name }}</h2>
+        <h2>{{ @result.restaurant.restaurant_name }}</h2>
 
-        <p>Menu here</p>
+        <h3>Menu</h3>
+        <check if="{{ @result.menu }}">
+            <repeat group="{{ @result.menu }}" value="{{ @result.menu }}">
+                <p>{{ trim(@result.menu.dish_name) }}</p>
+            </repeat>
+        </check>
     </div>
 </section>
