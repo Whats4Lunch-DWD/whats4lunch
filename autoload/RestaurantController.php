@@ -21,7 +21,7 @@ class RestaurantController {
 
 	public function listRestaurants() {
 		$restaurants = $this->mapper->find();	
-		echo "<pre>"; print_r($restaurants); echo "</pre>";
+		echo "<pre>"; print_r(count($restaurants)); echo "</pre>";
 		return $restaurants;
 	}
 
@@ -29,7 +29,7 @@ class RestaurantController {
 		$restaurant = $this->mapper->load(['id=?', $id]);
 		$menu = $this->menus_mapper->find(['restaurant_id=?', $id]);
 
-		echo "<pre>"; print_r(count($menu)); echo "</pre>";
+		//echo "<pre>"; print_r(count($menu)); echo "</pre>";
 
 		$restaurant_menu = array("restaurant"=>$restaurant, "menu"=>$menu);
 		return $restaurant_menu;
