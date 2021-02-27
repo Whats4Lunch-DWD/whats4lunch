@@ -1,10 +1,10 @@
 <div class="content">
     <div class="main-content container">
         <h2 class="title">Restaurants</h2>
-        <check if="{{ @records.restaurants }}">
+        <check if="{{ @records.results }}">
             <true>
                 <set ctr="{{ 0 }}" />
-                <repeat group="{{ @records.restaurants }}" value="{{ @record }}" counter="{{ @ctr }}">
+                <repeat group="{{ @records.results }}" value="{{ @record }}" counter="{{ @ctr }}">
                     {{ @ctr }}%3{{ @ctr%3 }}
                     <check if="{{ @ctr%3 }}">
                         <true></true>
