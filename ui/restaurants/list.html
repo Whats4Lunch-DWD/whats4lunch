@@ -3,6 +3,7 @@
         <h2 class="title">Restaurants</h2>
         <check if="{{ @records }}">
             <true>
+                <set ctr="{{ 0 }}" />
                 <repeat group="{{ @records }}" value="{{ @record }}" counter="{{ @ctr }}">
                     <check if="{{ @ctr%3 }}">
                         <false>
