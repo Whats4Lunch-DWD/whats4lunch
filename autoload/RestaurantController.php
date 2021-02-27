@@ -20,7 +20,8 @@ class RestaurantController {
 	}
 
 	public function listRestaurants() {
-		$restaurants = $this->mapper->find();		
+		$restaurants = $this->mapper->find();	
+		echo "<pre>"; print_r($restaurants); echo "</pre>";
 		return $restaurants;
 	}
 
