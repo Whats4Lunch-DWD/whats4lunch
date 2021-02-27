@@ -34,7 +34,7 @@ $f3->route('GET /',
   }
 );
 
-// Add a new restaurants
+// search resto
 $f3->route('POST /',
   function ($f3) {
     $query = $f3->get('POST');
@@ -77,6 +77,14 @@ $f3->route('POST /',
     }
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/search_response.html');
+    echo Template::instance()->render('layout.html');
+  }
+);
+
+$f3->route('GET /about',
+  function ($f3) {
+    $f3->set('html_title','About - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','about.html');
     echo Template::instance()->render('layout.html');
   }
 );
