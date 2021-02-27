@@ -3,8 +3,12 @@
         <h2 class="title">Restaurants</h2>
         <check if="{{ @records }}">
             <true>
-                <div class="columns">
-                    <repeat group="{{ @records }}" value="{{ @record }}">
+                <repeat group="{{ @records }}" value="{{ @record }}" counter="{{ @ctr }}">
+                    <check if="{{ @ctr%3 }}">
+                        <false>
+                            <div class="columns">
+                        </false>
+                    </check>
                         <div class="column is-one-third">
                             <div class="card">
                                 <div class="card-image">
@@ -24,8 +28,12 @@
                                 </div>
                             </div>
                         </div>
-                    </repeat>
-                </div>
+                        <check if="{{ @ctr%3 }}">
+                            <false>
+                                </div>
+                            </false>
+                        </check>
+                </repeat>
             </true>
             <false>
                 No restaurants are available.

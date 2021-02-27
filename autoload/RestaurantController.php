@@ -21,17 +21,18 @@ class RestaurantController {
 
 	public function listRestaurants() {
 		$restaurants = $this->mapper->find();	
-		echo "<pre>"; print_r(count($restaurants)); echo "</pre>";
-		return $restaurants;
+		$total_restaurants = count($restaurants);
+		$r = array("results"=>$restaurants,"total_results"=>$total_restaurants);
+		
+		return $r;
 	}
 
 	public function getRestaurant($id) {
 		$restaurant = $this->mapper->load(['id=?', $id]);
 		$menu = $this->menus_mapper->find(['restaurant_id=?', $id]);
-
-		//echo "<pre>"; print_r(count($menu)); echo "</pre>";
-
-		$restaurant_menu = array("restaurant"=>$restaurant, "menu"=>$menu);
+		$total_menu_items = count($menu);
+		
+		$restaurant_menu = array("restaurant"=>$restaurant, "menu"=>$menu, "total_menu_items"=>$total_menu_items);
 		return $restaurant_menu;
 	}
 
