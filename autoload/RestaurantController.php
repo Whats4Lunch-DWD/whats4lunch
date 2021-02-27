@@ -8,7 +8,6 @@ class RestaurantController {
 
 	public function __construct() {
 		global $f3;
-		global $cart;
 
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"restaurants");	// create DB query mapper object
 																			// for the "restaurants" table
