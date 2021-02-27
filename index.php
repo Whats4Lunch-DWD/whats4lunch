@@ -106,8 +106,8 @@ $f3->route('GET /restaurants/add',
 $f3->route('GET /restaurants/show/@id',
   function ($f3,$args) {
     $controller = new RestaurantController;
-    print_r($args);
-    $data = $controller->getRestaurant();
+    //print_r($args);
+    $data = $controller->getRestaurant($args['id']);
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/show.html');
     echo Template::instance()->render('layout.html');
