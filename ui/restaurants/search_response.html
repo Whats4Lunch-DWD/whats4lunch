@@ -181,7 +181,11 @@
         <h2>Results for {{ @query.diet }} {{ @query.query }} that contains no {{ @query.allergy }} near {{ @query.location }}</h2>
         <check if="{{ @results }}">
             <true>
-                <div class="columns">
+                <set ctr="{{ 0 }}" />
+                <check if="{{ @ctr }}">
+                    <true></true>
+                    <false><div class="columns"></false>
+                </check>
                     <repeat group="{{ @results }}" value="{{ @record }}">
                         <div class="column is-one-third">
                             <div class="card">
@@ -202,8 +206,20 @@
                                 </div>
                             </div>
                         </div>
+                        <check if="{{ @ctr%3 }}">
+                            <true></true>
+                            <false>
+                                <check if="{{ @records.total_results == @ctr }}">
+                                    <true>
+                                        </div>
+                                    </true>
+                                    <false>
+                                        </div><div class="columns">
+                                    </false>
+                                </check>
+                            </false>
+                        </check>
                     </repeat>
-                </div>
             </true>
             <false>
                 No restaurants are available.
