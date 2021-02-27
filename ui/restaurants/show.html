@@ -2,7 +2,7 @@
     <div class="main-content container">
         <h2>{{ @result.restaurant.restaurant_name }}</h2>
 
-        <h3>Menu - Total {{ result.menu.count }}</h3>
+        <h3>Menu</h3>
         <check if="{{ @result.menu }}">
             <repeat group="{{ @result.menu }}" value="{{ @result.menu }}">
                 <div class="column is-one-third">
