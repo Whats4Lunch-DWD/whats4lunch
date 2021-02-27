@@ -41,6 +41,10 @@ p.title {
     margin: auto auto;
 }
 
+.searchbtn button {
+    width: 150px;
+}
+
 .content {
     background: url("../images/background.png") -120px -120px;
     text-align: center;
