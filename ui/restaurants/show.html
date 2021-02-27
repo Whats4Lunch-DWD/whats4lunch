@@ -4,7 +4,12 @@
 
         <h3>Menu</h3>
         <check if="{{ @result.menu }}">
-            <repeat group="{{ @result.menu }}" value="{{ @result.menu }}">
+            <set ctr="{{ 0 }}" />
+            <check if="{{ @ctr }}">
+                <true></true>
+                <false><div class="columns"></false>
+            </check>
+            <repeat group="{{ @result.menu }}" value="{{ @result.menu }}" counter="{{ @ctr }}">
                 <div class="column is-one-third">
                     <div class="card">
                         <div class="card-image">
@@ -24,6 +29,19 @@
                         </div>
                     </div>
                 </div>
+                <check if="{{ @ctr%3 }}">
+                    <true></true>
+                    <false>
+                        <check if="{{ @result.total_menu_items == @ctr }}">
+                            <true>
+                                </div>
+                            </true>
+                            <false>
+                                </div><div class="columns">
+                            </false>
+                        </check>
+                    </false>
+                </check>
             </repeat>
         </check>
     </div>
