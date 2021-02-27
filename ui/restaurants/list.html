@@ -9,10 +9,6 @@
                     <false><div class="columns"></false>
                 </check>
                 <repeat group="{{ @records.results }}" value="{{ @record }}" counter="{{ @ctr }}">
-                    <check if="{{ @ctr%3 }}">
-                        <true></true>
-                        <false></div><div class="columns"></false>
-                    </check>
                         <div class="column is-one-third">
                             <div class="card">
                                 <div class="card-image">
@@ -32,8 +28,18 @@
                                 </div>
                             </div>
                         </div>
-                        <check if="{{ @records.total_results == @ctr }}">
-                            <true></div></true>
+                        <check if="{{ @ctr%3 }}">
+                            <true></true>
+                            <false>
+                                <check if="{{ @records.total_results == @ctr }}">
+                                    <true>
+                                        </div>
+                                    </true>
+                                    <false>
+                                        </div><div class="columns">
+                                    </false>
+                                </check>
+                            </false>
                         </check>
                 </repeat>
             </true>
