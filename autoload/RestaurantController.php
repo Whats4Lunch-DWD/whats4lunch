@@ -25,8 +25,10 @@ class RestaurantController {
 
 	public function getRestaurant($id) {
 		$restaurant = $this->mapper->load(['id=?', $id]);
-		print_r($restaurant);			// load DB record matching the given ID
-		return $restaurant;
+		$menu = $this->menus_mapper->load(['restaurant_id=', $id]);
+
+		$restaurant_menu = array("restaurant"=>$restaurant, "menu"=>$menu);
+		return $restaurant_menu;
 	}
 
 	public function updateRestaurant($data) {
