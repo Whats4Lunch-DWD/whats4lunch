@@ -103,9 +103,10 @@ $f3->route('GET /restaurants/add',
 
 // Todo: modify the comment to add the id value in getRestaurant
 // Show the Show restaurants Page
-$f3->route('GET /restaurants/show',
-  function ($f3) {
+$f3->route('GET /restaurants/show/@id',
+  function ($f3,$args) {
     $controller = new RestaurantController;
+    print_r($args);
     $data = $controller->getRestaurant();
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/show.html');
