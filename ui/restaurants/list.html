@@ -1,12 +1,15 @@
 <div class="content">
     <div class="main-content container">
         <h2 class="title">Restaurants</h2>
-        <check if="{{ @records }}">
+        <check if="{{ @records.restaurants }}">
             <true>
                 <set ctr="{{ 0 }}" />
-                <repeat group="{{ @records }}" value="{{ @record }}" counter="{{ @ctr }}">
-                    {{ @ctr }}
-                    <div class="columns">
+                <repeat group="{{ @records.restaurants }}" value="{{ @record }}" counter="{{ @ctr }}">
+                    {{ @ctr }}%3{{ @ctr%3 }}
+                    <check if="{{ @ctr%3 }}">
+                        <true></true>
+                        <false><div class="columns"></false>
+                    </check>
                         <div class="column is-one-third">
                             <div class="card">
                                 <div class="card-image">
@@ -26,7 +29,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <check if="{{ @ctr%3 }}">
+                            <true></true>
+                            <false></div></false>
+                        </check>
                 </repeat>
             </true>
             <false>
