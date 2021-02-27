@@ -48,7 +48,7 @@ $f3->route('POST /',
       if ($query["allergy"]!="") {
         $criteria .= "and allergen not like '%".$query["allergy"]."%'";
       }
-      $sql = "select distinct restaurant_id, restaurant_name, restaurant.image from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria;
+      $sql = "select distinct restaurant_id, restaurant_name, restaurants.image from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria;
       //echo $sql;
       $f3->set('results',$f3->get('DB')->exec($sql));
 
@@ -72,7 +72,7 @@ $f3->route('POST /',
       //print_r($max_records["0"]["max_records"]);
       
       $criteria .= " and restaurants.id=".random_int(1,$max);
-      $sql = "select distinct restaurant_id, restaurant_name, restaurant.image from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria;
+      $sql = "select distinct restaurant_id, restaurant_name, restaurants.image from hazrulaz_whats4lunch.menus inner join hazrulaz_whats4lunch.restaurants on menus.restaurant_id=restaurants.id where ".$criteria;
       $f3->set('results',$f3->get('DB')->exec($sql));
     }
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
