@@ -7,10 +7,9 @@
                 <repeat group="{{ @records }}" value="{{ @record }}" counter="{{ @ctr }}">
                     {{ @ctr }}
                     <check if="{{ @ctr%3 }}">
-                        <true></true>
-                        <false>
+                        <true>
                             <div class="columns">
-                        </false>
+                        </true>
                     </check>
                         <div class="column is-one-third">
                             <div class="card">
@@ -32,10 +31,7 @@
                             </div>
                         </div>
                         <check if="{{ @ctr%3 }}">
-                            <true></true>
-                            <false>
-                                </div>
-                            </false>
+                            <true></div></true>
                         </check>
                 </repeat>
             </true>
