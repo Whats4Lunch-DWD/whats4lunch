@@ -26,6 +26,11 @@
                         </div>
                         <div class="card-content">
                             <p class="title is-4">{{ trim(@result.menu.dish_name) }}</p>
+                            <p class="is-4">{{ trim(@result.menu.description) }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-footer-item">{{ trim(@result.menu.price) }}</div>
+                            <div class="card-footer-item"><a href="#"><img src="{{ @BASE }}/ui/images/add-to-shopping-cart.png" alt="add to cart" /></a></div>
                         </div>
                     </div>
                 </div>
