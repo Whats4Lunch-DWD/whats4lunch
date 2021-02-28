@@ -35,7 +35,7 @@ class CartsController {
                 if ($item_key == "id") {
                     $this->cart_items_mapper["menu_id"]=$item_value;
                 }
-                if ($item_key != "created_at") {
+                if ($item_key != "created_at" or $item_key != "id") {
                     $this->cart_items_mapper[$item_key]=$item_value;
                 }
             }   
