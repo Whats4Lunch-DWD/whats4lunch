@@ -53,10 +53,13 @@ class CartsController {
 
         
         echo "<pre>";
+        print_r($this->cart_items_mapper["cart_id"]);
+        echo "<br />";
         print_r($this->cart_items_mapper["id"]);
         echo "<br />";
         print_r($this->cart_items_mapper["menu_id"]);
         echo "</pre>";
+        
 
         die();
         
