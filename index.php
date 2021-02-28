@@ -26,8 +26,6 @@ if (!isset($_SESSION["CART_SESSION"])) {
   $_SESSION["CART_SESSION"] = $session;
 }
 
-print_r($_SESSION);
-
   /////////////////////////////////////////////
  // Simple Example URL application routings //
 /////////////////////////////////////////////

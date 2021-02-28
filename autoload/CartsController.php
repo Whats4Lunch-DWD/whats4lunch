@@ -4,23 +4,38 @@
 
 class CartsController {
 	private $mapper;
+    private $cart_items_mapper;
 	private $menus_mapper;
     
 	public function __construct() {
 		global $f3;
 
         $this->mapper = new DB\SQL\Mapper($f3->get('DB'),"carts");	// create DB query mapper object
+        $this->cart_items_mapper = new DB\SQL\Mapper($f3->get('DB'),"cart_items");
         $this->menus_mapper = new DB\SQL\Mapper($f3->get('DB'),"menus");	// create DB query mapper object
     }
     
     public function add($id){
+        
+        $cart_session = $this->mapper->find("cart_session=?",$_SESSION["CART_SESSION"]);
+        $cart_items = null;
+
+        if (count($cart_session)<1) {
+            $this->addCart($_SESSION["CART_SESSION"]);
+        } else {
+            $cart_items = $this->cart_items_mapper->find("cart_id=?", $cart_session->cart_id);
+        }
+        
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
         
+
         echo "cart session: ".$_SESSION["CART_SESSION"]."<br />";
 
         foreach ($menu_item as $item_key => $item_value) {
             echo $item_key."=>".$item_value."<br />";
         }
+
+        print_r($cart_items);
         
         die();
     }
