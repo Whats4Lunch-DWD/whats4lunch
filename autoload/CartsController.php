@@ -108,7 +108,7 @@ class CartsController {
         }
 
 		$mycart = array("cart"=>$cart, "cart_items"=>$cart_items, "total_cart_items"=>$total_cart_items, "total_cart_value"=>$total_cart_value);
-        print_r($mycart);
+        //print_r($mycart);
 		return $mycart;
 	}
 
