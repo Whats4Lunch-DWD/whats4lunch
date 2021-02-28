@@ -15,7 +15,7 @@ class CartsController {
     }
     
     public function add($id){
-        $menu_item = $this->menus_mapper->load(['id=?', $id]);
+        $menu_item = $this->menus_mapper->find(['id=?', $id]);
 
         print_r($menu_item);
         
