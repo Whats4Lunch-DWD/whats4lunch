@@ -90,14 +90,6 @@ class CartsController {
         $this->mapper->save();									// save new record with these fields
 	}
 
-	public function listCarts() {
-		$Carts = $this->mapper->find();	
-		$total_Carts = count($Carts);
-		$r = array("results"=>$Carts,"total_results"=>$total_Carts);
-		
-		return $r;
-	}
-
 	public function getCart($cart_session) {
 		$cart = $this->mapper->load(['cart_session=?', $cart_session]);
 		$cart_items = $this->cart_items_mapper->find(['cart_id=?', $cart->id]);
@@ -110,10 +102,6 @@ class CartsController {
 		$mycart = array("cart"=>$cart, "cart_items"=>$cart_items, "total_cart_items"=>$total_cart_items, "total_cart_value"=>$total_cart_value);
         //print_r($mycart);
 		return $mycart;
-	}
-
-	public function updateCart($data) {
-		$this->mapper->save();									// save new record with these fields
 	}
 
 	public function deleteCart($id) {

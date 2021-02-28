@@ -105,15 +105,6 @@ $f3->route('GET /restaurants',
   }
 );
 
-// Show the Add restaurants page.
-$f3->route('GET /restaurants/add',
-  function ($f3) {
-    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','restaurants/add.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
 // Todo: modify the comment to add the id value in getRestaurant
 // Show the Show restaurants Page
 $f3->route('GET /restaurants/show/@id',
@@ -125,67 +116,6 @@ $f3->route('GET /restaurants/show/@id',
     //print_r($data);
     $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','restaurants/show.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-// Show the Update restaurants page.
-$f3->route('GET /restaurants/update',
-  function ($f3) {
-    $controller = new RestaurantController;
-    $data = $controller->getRestaurant();
-    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','restaurants/add.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-// Show the Delete restaurants page.
-$f3->route('GET /restaurants/delete',
-  function ($f3) {
-    $controller = new RestaurantController;
-    $data = $controller->getRestaurant();
-    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','restaurants/delete.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-// Add a new restaurants
-$f3->route('POST /restaurants',
-  function ($f3) {
-    $controller = new RestaurantController;
-    $controller->addRestaurant($formdata);
-    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
-    $f3->set('html_title','Restaurant - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','restaurants/add_response.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-// Update an existing restaurants
-$f3->route('PUT /restaurants',
-  function ($f3) {
-    $controller = new RestaurantController;
-    $controller->updateRestaurant($formdata);
-    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
-    $f3->reroute('/restaurants');		// will show edited data (GET route)
-  }
-);
-
-// Delete an existing restaurants
-$f3->route('DELETE /restaurants',
-  function ($f3) {
-    $controller = new RestaurantController;
-    $controller->deleteRestaurant($f3->get('POST.toDelete'));	// in this case, delete selected data record
-    $f3->reroute('/restaurants');		// will show edited data (GET route)
-  }
-);
-
-$f3->route('GET /menus',
-  function ($f3) {
-    $f3->set('html_title','Menus - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/list.html');
     echo Template::instance()->render('layout.html');
   }
 );
@@ -210,27 +140,6 @@ $f3->route('GET /cart/add/@id',
   }
 );
 
-// Show the Show Cart Page
-$f3->route('GET /carts/show',
-  function ($f3) {
-    $controller = new CartsController;
-    $data = $controller->getData();
-    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/carts/show.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-// Show the Update Cart page.
-$f3->route('GET /carts/update',
-  function ($f3) {
-    $controller = new CartsController;
-    $data = $controller->getData();
-    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/carts/add.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
 
 // Show the Delete Cart page.
 $f3->route('GET /carts/delete',
@@ -281,8 +190,6 @@ $f3->route('GET /cart_items',
     echo Template::instance()->render('layout.html');
   }
 );
-
-
 
 $f3->route('GET /sign-in',
   function ($f3) {
