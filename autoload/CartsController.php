@@ -16,6 +16,10 @@ class CartsController {
     public function add($id){
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
         
+        $session = session_create_id();
+
+        echo $session."<br />";
+
         foreach ($menu_item as $item_key => $item_value) {
             echo $item_key."=>".$item_value."<br />";
         }
