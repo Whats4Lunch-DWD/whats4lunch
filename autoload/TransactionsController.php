@@ -23,6 +23,9 @@ class TransactionsController {
         }
         $this->mapper["status"]="in_progress";
 
+        print_r($this->mapper);
+        die();
+
         $this->mapper->save();
 
         return $this->mapper["id"];
