@@ -41,18 +41,19 @@ class CartsController {
         //echo "menu_id from cart_items: ".$cart_items[0]["menu_id"]."<br />";
         //echo "id from add function: ".$id."<br />";
 
-        if ($cart_items[0]["menu_id"] != $id) {
-            foreach ($menu_item as $item_key => $item_value) {
-                echo $item_key."=>".$item_value."<br />";
-                if ($item_key != "created_at" ) {
-                    if ($item_key == "id") {
-                        $this->cart_items_mapper["menu_id"]=$item_value;
-                    } else {
-                        $this->cart_items_mapper[$item_key]=$item_value;
+        foreach ($menu_item as $item_key => $item_value) {
+            //echo $item_key."=>".$item_value."<br />";
+            if ($item_key != "created_at" ) {
+                if ($item_key == "id") {
+                    if ($cart_items[0]["id"] == $item_value) {
+                        $this->cart_items_mapper["id"]=$item_value;
                     }
+                    $this->cart_items_mapper["menu_id"]=$item_value;
+                } else {
+                    $this->cart_items_mapper[$item_key]=$item_value;
                 }
-            }   
-        }
+            }
+        }   
 
         $this->cart_items_mapper["cart_id"] = $cart_session[0]["id"];
         $this->cart_items_mapper["quantity"]+=1;
