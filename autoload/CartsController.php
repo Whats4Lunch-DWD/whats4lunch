@@ -22,7 +22,8 @@ class CartsController {
 
         echo "php session cart session: ".$_SESSION["CART_SESSION"]."<br />";
         print_r($cart_session); echo "<br />";
-        echo "cart session: ".$cart_session["id"]."<br />";
+        echo "cart id: ".$cart_session["id"]."<br />";
+        echo "cart session: ".$cart_session["cart_session"]."<br />";
         //die();
         
 
