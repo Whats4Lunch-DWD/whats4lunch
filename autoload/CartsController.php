@@ -27,17 +27,22 @@ class CartsController {
         }
         
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
-        
+        //echo "cart session: ".$_SESSION["CART_SESSION"]."<br />";
 
-        echo "cart session: ".$_SESSION["CART_SESSION"]."<br />";
-
-        foreach ($menu_item as $item_key => $item_value) {
-            echo $item_key."=>".$item_value."<br />";
+        if ($cart_items["menu_id"] != $id) {
+            foreach ($menu_item as $item_key => $item_value) {
+                //echo $item_key."=>".$item_value."<br />";
+                if ($item_key != "created_at") {
+                    $this->cart_items_mapper[$item_key]=$item_value;
+                }
+            }
+        } else {
+            $this->cart_items_mapper["quantity"]+=1;
         }
 
-        print_r($cart_items);
-        
-        die();
+        $this->cart_items_mapper->save();
+
+        $f3->reroute("/cart");
     }
 
     public function addCart($data) {
@@ -53,13 +58,17 @@ class CartsController {
 		return $r;
 	}
 
-	public function getCart($id) {
-		$Cart = $this->mapper->load(['id=?', $id]);
-		$menu = $this->menus_mapper->find(['Cart_id=?', $id]);
-		$total_menu_items = count($menu);
+	public function getCart($cart_session) {
+		$cart = $this->mapper->load(['cart_session=?', $cart_session]);
+		$cart_items = $this->cart_items_mapper->find(['cart_id=?', $cart->id]);
+		$total_cart_items = count($cart_items);
+        $total_cart_value = 0;
+        foreach ($cart_items as $c) {
+            $total_cart_value += $c["price"]*$c["quantity"];
+        }
 
-		$Cart_menu = array("Cart"=>$Cart, "menu"=>$menu, "total_menu_items"=>$total_menu_items);
-		return $Cart_menu;
+		$mycart = array("cart"=>$cart, "cart_items"=>$cart_items, "total_cart_items"=>$total_cart_items, "total_cart_value"=>total_cart_value);
+		return $mycart;
 	}
 
 	public function updateCart($data) {
