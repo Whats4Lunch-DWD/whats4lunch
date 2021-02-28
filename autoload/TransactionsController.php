@@ -26,6 +26,7 @@ class TransactionsController {
         print_r($this->mapper);
         die();
 
+        $_SESSION["CART_SESSION"]=null;
         $this->mapper->save();
 
         return $this->mapper["id"];
