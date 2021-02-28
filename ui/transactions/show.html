@@ -7,7 +7,7 @@
 
             <div class="columns">
                 <div class="cart column">
-                    <h3>My Cart</h3>
+                    <h3>Transaction Receipt</h3>
     
                     <div class="columns menu-items">
                         <div class="column">
@@ -38,10 +38,32 @@
                             
                         </div>
                         <div class="column">
-                            Total:
+                            Sub-Total:
                         </div>
                         <div class="column">
                             {{ @transaction_cart_items.transaction->total_price }}
+                        </div>
+                    </div>
+                    <div class="columns cart-price">
+                        <div class="column">
+                            
+                        </div>
+                        <div class="column">
+                            Delivery Fee:
+                        </div>
+                        <div class="column">
+                            $3.00
+                        </div>
+                    </div>
+                    <div class="columns cart-price">
+                        <div class="column">
+                            
+                        </div>
+                        <div class="column">
+                            Total:
+                        </div>
+                        <div class="column">
+                            {{ @transaction_cart_items.transaction->total_price+3 }}
                         </div>
                     </div>
                 </div>
