@@ -51,6 +51,7 @@ class CartsController {
                         $this->cart_items_mapper[$item_key]=$item_value;
                     }
                 }
+                $this->cart_items_mapper["quantity"]=1;
             }   
 
             $this->cart_items_mapper["id"]=null; // so that the mapper is dry.
@@ -58,10 +59,10 @@ class CartsController {
             if ($cart_items["id"]>0) {
                 $this->cart_items_mapper["id"]=$cart_items["id"];
             }
+            $this->cart_items_mapper["quantity"]=$cart_items["quantity"]+1;
         }
 
         $this->cart_items_mapper["cart_id"] = $cart_session[0]["id"];
-        $this->cart_items_mapper["quantity"]=$cart_items["quantity"]+1;
 
         
         echo "<pre>";
