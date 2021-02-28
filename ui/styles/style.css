@@ -97,12 +97,12 @@ div.is-left > p {
     text-align: left;
 }
 
-.menu-item {
+.c-title {
     font-weight: 600;
     color: #221F20;
 }
 
-.menu-description {
+.c-description {
     font-weight: normal;
     color: #808080;
 }
