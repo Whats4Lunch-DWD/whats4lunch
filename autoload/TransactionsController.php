@@ -14,8 +14,18 @@ class TransactionsController {
     }
     
     public function add($cart) {
-        print_r($cart);
-        die();
+        //print_r($cart);
+        //die();
+        $this->mapper->dry();
+
+        foreach($cart as $cart_key => $cart_value) {
+            $this->mapper[$cart_key]=$cart_value;
+        }
+        $this->mapper["status"]="in_progress";
+
+        $this->mapper->save();
+
+        return $this->mapper["id"];
     }
 
     public function getTransaction($id) {

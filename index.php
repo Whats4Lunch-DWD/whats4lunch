@@ -154,8 +154,8 @@ $f3->route('POST /transactions/add',
   function ($f3) {
     $cart = $f3->get('POST');
     $controller = new TransactionsController;
-    $data = $controller->add($cart);
-    $f3->reroute('/transactions/'.$data["id"]);
+    $transaction_id = $controller->add($cart);
+    $f3->reroute('/transactions/'.$transaction_id);
   }
 );
 
