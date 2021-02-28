@@ -18,7 +18,7 @@ class CartsController {
         
         
 
-        echo $_SESSION["CART_SESSION"]."<br />";
+        echo "cart session: ".$_SESSION["CART_SESSION"]."<br />";
 
         foreach ($menu_item as $item_key => $item_value) {
             echo $item_key."=>".$item_value."<br />";
