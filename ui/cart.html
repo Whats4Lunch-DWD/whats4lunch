@@ -35,7 +35,14 @@
                 </repeat>
                 <div class="columns cart-price">
                     <div class="column">
-                        <div class="button"><a href="{{ @BASE }}/restaurants/show/{{ @cart_item->restaurant_id }}">&lt; Continue Shopping</a></div>
+                        <check if="{{ @cart_item->restaurant_id }}">
+                            <true>
+                                <div class="button"><a href="{{ @BASE }}/restaurants/show/{{ @cart_item->restaurant_id }}">&lt; Continue Shopping</a></div>
+                            </true>
+                            <false>
+                                <div class="button"><a href="{{ @BASE }}/restaurants/">&lt; Continue Shopping</a></div>
+                            </false>
+                        </check>
                     </div>
                     <div class="column">
                         Total:
