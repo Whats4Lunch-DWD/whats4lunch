@@ -361,9 +361,4 @@ $f3->route('POST /editView',		// this is used when the form is submitted, i.e. m
 
 $f3->run();
 
-$f3->set('SESSION.previousUrl',$f3->REALM);
-
-// redirect code:
-$f3->reroute($f3->get('SESSION.previousUrl'));
-
 ?>
