@@ -18,6 +18,7 @@ class CartsController {
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
 
         echo "<pre>";
+        print_r($menu_item["fields"]);
         print_r($menu_item);
         echo "</pre>";
         
