@@ -149,56 +149,27 @@ $f3->route('GET /cart/delete/@id',
   }
 );
 
-
-// Show the Delete Cart page.
-$f3->route('GET /carts/delete',
+// Confirm the order
+$f3->route('POST /transactions/add',
   function ($f3) {
-    $controller = new CartsController;
-    $data = $controller->getData();
-    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/carts/delete.html');
+    $cart = $f3->get('POST');
+    $controller = new TransactionsController;
+    $data = $controller->add($cart);
+    $f3->reroute('/transactions/'.$data["id"]);
+  }
+);
+
+$f3->route('GET /transactions/@id',
+  function ($f3, $args) {
+    $controller = new TransactionsController;
+    $data = $controller->getTransaction($args['id']);
+    $f3->set('transaction',$data);
+    $f3->set('html_title','Transaction - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
+    $f3->set('content','transactions/show.html');
     echo Template::instance()->render('layout.html');
   }
 );
 
-// Add a new cart
-$f3->route('POST /carts',
-  function ($f3) {
-    $controller = new CartsController;
-    $controller->addCart($formdata);
-    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
-    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/carts/add_response.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-// Update an existing cart
-$f3->route('PUT /carts',
-  function ($f3) {
-    $controller = new CartsController;
-    $controller->updateCart($formdata);
-    $f3->set('formData',$formdata);		// set info in F3 variable for access in response template
-    $f3->reroute('/carts');		// will show edited data (GET route)
-  }
-);
-
-// Delete an existing cart
-$f3->route('DELETE /carts',
-  function ($f3) {
-    $controller = new CartsController;
-    $controller->deleteCart($f3->get('POST.toDelete'));	// in this case, delete selected data record
-    $f3->reroute('/carts');		// will show edited data (GET route)
-  }
-);
-
-$f3->route('GET /cart_items',
-  function ($f3) {
-    $f3->set('html_title','Cart Items - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/cart_items/list.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
 
 $f3->route('GET /sign-in',
   function ($f3) {
@@ -207,69 +178,6 @@ $f3->route('GET /sign-in',
     echo Template::instance()->render('layout.html');
   }
 );
-
-// When using GET, provide a form for the user to upload an image via the file input type
-$f3->route('GET /simpleform',
-  function($f3) {
-    $f3->set('html_title','Simple Input Form');
-    $f3->set('content','simpleform.html');
-    echo template::instance()->render('layout.html');
-  }
-);
-
-// When using POST (e.g.  form is submitted), invoke the controller, which will process
-// any data then return info we want to display. We display
-// the info here via the response.html template
-$f3->route('POST /simpleform',
-  function($f3) {
-	$formdata = array();			// array to pass on the entered data in
-	$formdata["name"] = $f3->get('POST.name');			// whatever was called "name" on the form
-	$formdata["colour"] = $f3->get('POST.colour');		// whatever was called "colour" on the form
-  $formdata["pet"] = $f3->get('POST.pet');
-
-  	$controller = new SimpleController;
-    $controller->putIntoDatabase($formdata);
-
-	$f3->set('formData',$formdata);		// set info in F3 variable for access in response template
-
-    $f3->set('html_title','Simple Example Response');
-	$f3->set('content','response.html');
-	echo template::instance()->render('layout.html');
-  }
-);
-
-$f3->route('GET /dataView',
-  function($f3) {
-  	$controller = new SimpleController;
-    $alldata = $controller->getData();
-
-    $f3->set("dbData", $alldata);
-    $f3->set('html_title','Viewing the data');
-    $f3->set('content','dataView.html');
-    echo template::instance()->render('layout.html');
-  }
-);
-
-$f3->route('GET /editView',				// exactly the same as dataView, apart from the template used
-  function($f3) {
-  	$controller = new SimpleController;
-    $alldata = $controller->getData();
-
-    $f3->set("dbData", $alldata);
-    $f3->set('html_title','Viewing the data');
-    $f3->set('content','editView.html');
-    echo template::instance()->render('layout.html');
-  }
-);
-
-$f3->route('POST /editView',		// this is used when the form is submitted, i.e. method is POST
-  function($f3) {
-  	$controller = new SimpleController;
-    $controller->deleteFromDatabase($f3->get('POST.toDelete'));		// in this case, delete selected data record
-
-	$f3->reroute('/editView');  }		// will show edited data (GET route)
-);
-
 
   ////////////////////////
  // Run the F3 engine //
