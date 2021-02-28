@@ -32,7 +32,7 @@ class CartsController {
         if (count($cart_session)<1) {
             $this->addCart($_SESSION["CART_SESSION"]);
         } else {
-            $cart_items = $this->cart_items_mapper->find(["cart_id=? and menu_id=?", $cart_session[0]["id"], $cart_session[0]["menu_id"]]);
+            $cart_items = $this->cart_items_mapper->find(["cart_id=? and menu_id=?", $cart_session[0]["id"], $id]);
         }
         
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
