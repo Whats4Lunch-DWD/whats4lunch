@@ -20,6 +20,7 @@ class CartsController {
         echo "<pre>";
         //print_r($menu_item["fields"]);
         print_r($menu_item);
+        print_r($menu_item["fields:protected"]);
         echo "</pre>";
         
         //$cart = $this->addItem($menu_item);
