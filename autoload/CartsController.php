@@ -45,7 +45,8 @@ class CartsController {
         $this->cart_items_mapper["quantity"]+=1;
 
         echo "<pre>";
-        print_r($this->cart_items_mapper);
+        print_r($this->cart_items_mapper["id"]);
+        print_r($this->cart_items_mapper["menu_id"]);
         echo "</pre>";
 
         die();
