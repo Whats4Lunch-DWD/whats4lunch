@@ -92,8 +92,8 @@ class CartsController {
 
     public function delete($cart_item_id) { 
         // this id is the cart_item id. not the menu id.
-
-        echo $cart_item_id;
+        $this->cart_items_mapper->load(['id=?', $cart_item_id]);				// load DB record matching the given ID
+		$this->cart_items_mapper->erase();
     }
 
 	public function getCart($cart_session) {
