@@ -17,7 +17,7 @@ class CartsController {
     
     public function add($id){
         
-        $cart_session = $this->mapper->find("cart_session=?",$_SESSION["CART_SESSION"]);
+        $cart_session = $this->mapper->find(["cart_session=?",$_SESSION["CART_SESSION"]]);
         $cart_items = null;
 
         if (count($cart_session)<1) {
