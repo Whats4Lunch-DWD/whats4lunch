@@ -20,9 +20,8 @@ class CartsController {
         $cart_session = $this->mapper->find(["cart_session=?",$_SESSION["CART_SESSION"]]);
         $cart_items = null;
 
-        
-        echo "cart session: ";
-        print_r($cart_session->id); 
+        echo "php session cart session: ".$_SESSION["CART_SESSION"]."<br />";
+        echo "cart session: ".$cart_session->id;
         //die();
         
 
