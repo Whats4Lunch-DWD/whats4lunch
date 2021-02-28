@@ -15,6 +15,8 @@
                     <div class="column">
                         Price
                     </div>
+                    <div class="column">
+                    </div>
                 </div>
                 <repeat group="{{ @cart.cart_items }}" value="{{ @cart_item }}" counter="{{ @ctr }}">
                     <div class="columns menu-items">
@@ -26,6 +28,9 @@
                         </div>
                         <div class="column">
                             {{ @cart_item->price * @cart_item->quantity }}
+                        </div>
+                        <div class="column">
+                            <a href="#"><img src="{{ @BASE }}/ui/images/delete.png" alt="Remove from Cart" /></a>
                         </div>
                     </div>
                 </repeat>
