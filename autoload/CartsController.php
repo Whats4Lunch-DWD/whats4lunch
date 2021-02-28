@@ -18,9 +18,12 @@ class CartsController {
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
 
         echo "<pre>";
-        //print_r($menu_item["fields"]);
-        print_r($menu_item);
+        //print_r($menu_item);
         print_r($menu_item->dish_name);
+        foreach ($menu_item as $item_key => $item_value) {
+            print_r($item_key);
+            print_r($item_value);
+        }
         echo "</pre>";
         
         //$cart = $this->addItem($menu_item);
