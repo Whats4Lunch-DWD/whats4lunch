@@ -23,10 +23,10 @@ class TransactionsController {
         }
         $this->mapper["status"]="in_progress";
 
-        echo "<pre>";
-        print_r($this->mapper);
-        echo "</pre>";
-        die();
+        //echo "<pre>";
+        //print_r($this->mapper);
+        //echo "</pre>";
+        //die();
 
         $_SESSION["CART_SESSION"]=null;
         $this->mapper->save();
