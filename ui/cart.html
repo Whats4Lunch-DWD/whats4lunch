@@ -50,6 +50,7 @@
                     </div>
                     <div class="column">
                         {{ @cart.total_cart_value }}
+                        <input name="total_price" type="hidden" value="{{ @cart_item->total_cart_value }}" />
                     </div>
                     <div class="is-2 column">
                     </div>
@@ -128,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            <div class="column"><input name="cart_id" type="hidden" value="{{ @cart_item->id }}" /></div>
+            <div class="column"><input name="cart_id" type="hidden" value="{{ @cart_item->cart_id }}" /></div>
         </div>
 
     </div>
