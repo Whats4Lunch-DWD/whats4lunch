@@ -13,6 +13,28 @@ class CartsController {
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"carts");	// create DB query mapper object
     }
     
+    public function add(){
+        $cart = array();
+
+        foreach($_GET as $item_key => $item_value) {
+            array_push($cart);
+        }
+        
+        $this->addItem($cart);
+
+        print_r($cart);
+
+        die();
+    }
+
+    public function addItem($menu_item) {
+        foreach ($menu_item as $item_key => $item_value) {
+            $basket->set($item_key,$item_value);
+        }
+        $basket->save();
+        $basket->reset();
+    }
+
     public function addCart($data) {
 		$this->reset();
 		$this->mapper->save();									// save new record with these fields

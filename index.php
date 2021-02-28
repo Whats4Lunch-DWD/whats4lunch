@@ -189,32 +189,17 @@ $f3->route('GET /menus',
 $f3->route('GET /cart',
   function ($f3) {
     $f3->set('html_title','Cart - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/cart.html');
-    echo Template::instance()->render('layout.html');
-  }
-);
-
-
-// Todo. Create cartscontroller and update the front controller.
-// Show the List Carts page.
-$f3->route('GET /carts',
-  function ($f3) {
-    $controller = new CartsController;
-    $data = $controller->getData();
-    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/carts/list.html');
+    $f3->set('content','cart.html');
     echo Template::instance()->render('layout.html');
   }
 );
 
 // Show the Add Cart page.
-$f3->route('GET /carts/add',
+$f3->route('GET /cart/add',
   function ($f3) {
     $controller = new CartsController;
-    $data = $controller->getData();
-    $f3->set('html_title','Carts - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
-    $f3->set('content','menus/carts/add.html');
-    echo Template::instance()->render('layout.html');
+    $data = $controller->add();
+    $f3->reroute('/cart');
   }
 );
 
