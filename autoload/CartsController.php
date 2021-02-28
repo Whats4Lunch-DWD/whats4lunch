@@ -93,7 +93,7 @@ class CartsController {
     public function delete($cart_item_id) { 
         // this id is the cart_item id. not the menu id.
 
-
+        echo $cart_item_id;
     }
 
 	public function getCart($cart_session) {
