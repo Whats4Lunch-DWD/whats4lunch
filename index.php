@@ -20,9 +20,6 @@ $f3->get('DB')->exec("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZER
 $f3->set('DEBUG',3);		// set maximum debug level
 $f3->set('UI','ui/');		// folder for View templates
 
-global $basket;
-$basket = new \Basket();
-
   /////////////////////////////////////////////
  // Simple Example URL application routings //
 /////////////////////////////////////////////
@@ -114,7 +111,7 @@ $f3->route('GET /restaurants/add',
 // Todo: modify the comment to add the id value in getRestaurant
 // Show the Show restaurants Page
 $f3->route('GET /restaurants/show/@id',
-  function ($f3,$args,$basket) {
+  function ($f3,$args) {
     $controller = new RestaurantController;
     //print_r($args);
     $data = $controller->getRestaurant($args['id']);

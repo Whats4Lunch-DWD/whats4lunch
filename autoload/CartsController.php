@@ -10,6 +10,8 @@ class CartsController {
 		global $f3;
 		global $basket;
 
+        $this->$basket = new \Basket();
+
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"carts");	// create DB query mapper object
         $this->menus_mapper = new DB\SQL\Mapper($f3->get('DB'),"menus");	// create DB query mapper object
     }
@@ -28,12 +30,12 @@ class CartsController {
         foreach ($menu_item as $item_key => $item_value) {
             echo $item_key."=>".$item_value."<br />";
             
-            //$basket->set("$item_key","$item_value");
+            $this->basket->set($item_key,$item_value);
         }
-        $basket->set("quantity",1);
+        $this->basket->set("quantity",1);
 
-        $basket->save();
-        $basket->reset();
+        $this->basket->save();
+        $this->basket->reset();
     }
 
     public function addCart($data) {
