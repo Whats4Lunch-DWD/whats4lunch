@@ -53,8 +53,6 @@ class CartsController {
                 }
                 $this->cart_items_mapper["quantity"]=1;
             }   
-
-            //$this->cart_items_mapper["id"]=null; // so that the mapper is dry.
         } else {
             // hydrate the cart
             $hydrated_cart_item = $this->cart_items_mapper->load(["cart_id=?", $cart_session[0]["id"]]);
