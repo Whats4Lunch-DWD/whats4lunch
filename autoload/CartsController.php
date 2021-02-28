@@ -8,9 +8,6 @@ class CartsController {
 
 	public function __construct() {
 		global $f3;
-		global $basket;
-
-        $basket = new \Basket();
 
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"carts");	// create DB query mapper object
         $this->menus_mapper = new DB\SQL\Mapper($f3->get('DB'),"menus");	// create DB query mapper object
@@ -18,24 +15,12 @@ class CartsController {
     
     public function add($id){
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
-
-        $cart = $this->addItem($menu_item);
-
-        print_r($cart);
-
-        die();
-    }
-
-    public function addItem($menu_item) {
+        
         foreach ($menu_item as $item_key => $item_value) {
-            echo $item_key."=>".$item_value."<br />";
-            
-            //$basket->set("$item_key","$item_value");
+            echo $item_value."=>".$item_value."<br />";
         }
-        $basket->set("quantity",1);
-
-        $basket->save();
-        $basket->reset();
+        
+        die();
     }
 
     public function addCart($data) {
