@@ -97,6 +97,10 @@ div.is-left > p {
     text-align: left;
 }
 
+.cart > *, .payment > *, .delivery-address > * {
+    text-align: left;
+}
+
 footer.footer {
     padding: 2rem 1.5rem 2em !important;
     background: #221F20;
