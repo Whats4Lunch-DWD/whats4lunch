@@ -38,7 +38,7 @@ class CartsController {
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
         //echo "cart session: ".$_SESSION["CART_SESSION"]."<br />";
 
-        if ($cart_items["menu_id"] != $id) {
+        if ($cart_items[0]["menu_id"] != $id) {
             foreach ($menu_item as $item_key => $item_value) {
                 echo $item_key."=>".$item_value."<br />";
                 if ($item_key != "created_at" ) {
