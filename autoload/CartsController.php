@@ -32,10 +32,7 @@ class CartsController {
         if (count($cart_session)<1) {
             $this->addCart($_SESSION["CART_SESSION"]);
         } else {
-            $cart_items_hydrated = $this->cart_items_mapper->find(["cart_id=?", $cart_session[0]["id"]]);
-            if ($cart_items_hydrated) {
-                $cart_items = $this->cart_items_mapper->load(["cart_id=?", $cart_session[0]["id"]]);
-            }
+            $cart_items = $this->cart_items_mapper->load(["cart_id=?", $cart_session[0]["id"]]);
         }
         
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
@@ -45,6 +42,7 @@ class CartsController {
         //echo "id from add function: ".$id."<br />";
 
         if ($cart_items["menu_id"] != $id) {
+            $cart_items=null;
             foreach ($menu_item as $item_key => $item_value) {
                 //echo $item_key."=>".$item_value."<br />";
                 if ($item_key != "created_at" ) {
