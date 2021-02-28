@@ -32,13 +32,17 @@ class CartsController {
         if ($cart_items["menu_id"] != $id) {
             foreach ($menu_item as $item_key => $item_value) {
                 //echo $item_key."=>".$item_value."<br />";
+                if ($item_key == "id") {
+                    $this->cart_items_mapper["menu_id"]=$item_value;
+                }
                 if ($item_key != "created_at") {
                     $this->cart_items_mapper[$item_key]=$item_value;
                 }
-            }
-        } else {
-            $this->cart_items_mapper["quantity"]+=1;
+            }   
         }
+
+        $this->cart_items_mapper["cart_id"] = $cart_session["id"];
+        $this->cart_items_mapper["quantity"]+=1;
 
         $this->cart_items_mapper->save();
     }
