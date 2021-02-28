@@ -5,20 +5,20 @@
 class CartsController {
 	private $mapper;
 	private $menus_mapper;
-
+    
 	public function __construct() {
 		global $f3;
 
-		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"carts");	// create DB query mapper object
+        $this->mapper = new DB\SQL\Mapper($f3->get('DB'),"carts");	// create DB query mapper object
         $this->menus_mapper = new DB\SQL\Mapper($f3->get('DB'),"menus");	// create DB query mapper object
     }
     
     public function add($id){
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
         
-        $session = session_create_id();
+        
 
-        echo $session."<br />";
+        echo $_SESSION["CART_SESSION"]."<br />";
 
         foreach ($menu_item as $item_key => $item_value) {
             echo $item_key."=>".$item_value."<br />";
