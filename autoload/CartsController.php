@@ -53,6 +53,8 @@ class CartsController {
                 }
             }   
 
+            $this->cart_items_mapper["id"]=null; // so that the mapper is dry.
+        } else {
             if ($cart_items["id"]>0) {
                 $this->cart_items_mapper["id"]=$cart_items["id"];
             }
