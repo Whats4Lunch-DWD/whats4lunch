@@ -194,6 +194,8 @@ $f3->route('GET /cart',
   function ($f3) {
     $controller = new CartsController;
     $data = $controller->getCart($_SESSION["CART_SESSION"]);
+    echo "cart session: ".$_SESSION["CART_SESSION"];
+    print_r($data);
     $f3->set('cart',$data);
     $f3->set('html_title','Cart - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','cart.html');
