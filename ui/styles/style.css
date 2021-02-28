@@ -102,7 +102,7 @@ div.is-left > p {
 }
 
 .cart, .delivery-address {
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .delivery-address {
