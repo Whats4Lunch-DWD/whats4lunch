@@ -101,6 +101,14 @@ div.is-left > p {
     background-color: #fff;
 }
 
+.cart, .delivery-address {
+    margin-left: 10px;
+}
+
+.delivery-address {
+    margin-top: 10px;
+}
+
 .cart > *, .payment > *, .delivery-address > * {
     text-align: left !important;
 }
