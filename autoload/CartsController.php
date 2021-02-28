@@ -44,6 +44,7 @@ class CartsController {
         //die();
 
         if ($cart_items[0]["menu_id"] != $id) {
+            // Add new item
             foreach ($menu_item as $item_key => $item_value) {
                 //echo $item_key."=>".$item_value."<br />";
                 if ($item_key != "created_at" ) {
@@ -56,6 +57,7 @@ class CartsController {
                 $this->cart_items_mapper["quantity"]=1;
             }   
         } else {
+            // Update existing item
             // hydrate the cart
             $hydrated_cart_item = $this->cart_items_mapper->load(["cart_id=? and menu_id=?", $cart_session[0]["id"], $id]);
             if ($hydrated_cart_item["id"]>0) {
@@ -105,7 +107,8 @@ class CartsController {
             $total_cart_value += $c["price"]*$c["quantity"];
         }
 
-		$mycart = array("cart"=>$cart, "cart_items"=>$cart_items, "total_cart_items"=>$total_cart_items, "total_cart_value"=>total_cart_value);
+		$mycart = array("cart"=>$cart, "cart_items"=>$cart_items, "total_cart_items"=>$total_cart_items, "total_cart_value"=>$total_cart_value);
+        print_r($mycart);
 		return $mycart;
 	}
 
