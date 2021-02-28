@@ -19,9 +19,9 @@ class CartsController {
 
         print_r($menu_item);
         
-        $cart = $this->addItem($menu_item);
+        //$cart = $this->addItem($menu_item);
 
-        print_r($cart);
+        //print_r($cart);
 
         die();
     }
