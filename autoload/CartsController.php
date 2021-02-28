@@ -41,8 +41,8 @@ class CartsController {
     }
 
     public function addCart($data) {
-		$this->reset();
-		$this->mapper->save();									// save new record with these fields
+		$this->mapper->cart_session = $data;
+        $this->mapper->save();									// save new record with these fields
 	}
 
 	public function listCarts() {
