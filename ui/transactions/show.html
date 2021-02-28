@@ -67,10 +67,14 @@
                         </div>
                     </div>
                     <div class="columns payment-method">
-                        {{ @transaction_cart_items.transaction->payment_method }}
+                        <hr />
+                        <h3>Payment Method</h3>
+                        <p>{{ @transaction_cart_items.transaction->payment_method }}</p>
                     </div>
                     <div class="columns delivery-location">
-                        {{ @transaction_cart_items.transaction->address1 }} {{ @transaction_cart_items.transaction->address2 }} {{ @transaction_cart_items.transaction->postal_code }}
+                        <hr />
+                        <h3>Delivery Location</h3>
+                        <p>{{ @transaction_cart_items.transaction->address1 }} {{ @transaction_cart_items.transaction->address2 }} {{ @transaction_cart_items.transaction->postal_code }}</p>
                     </div>
                 </div>
             </div>
