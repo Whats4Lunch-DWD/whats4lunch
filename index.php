@@ -196,9 +196,9 @@ $f3->route('GET /cart',
 
 // Show the Add Cart page.
 $f3->route('GET /cart/add/@id',
-  function ($f3) {
+  function ($f3, $args) {
     $controller = new CartsController;
-    $data = $controller->add(@id);
+    $data = $controller->add($args['id']);
     $f3->reroute('/cart');
   }
 );
