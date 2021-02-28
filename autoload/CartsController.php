@@ -17,7 +17,7 @@ class CartsController {
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
         
         foreach ($menu_item as $item_key => $item_value) {
-            echo $item_value."=>".$item_value."<br />";
+            echo $item_key."=>".$item_value."<br />";
         }
         
         die();
