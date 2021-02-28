@@ -90,6 +90,12 @@ class CartsController {
         $this->mapper->save();									// save new record with these fields
 	}
 
+    public function delete($cart_item_id) { 
+        // this id is the cart_item id. not the menu id.
+
+
+    }
+
 	public function getCart($cart_session) {
 		$cart = $this->mapper->load(['cart_session=?', $cart_session]);
 		$cart_items = $this->cart_items_mapper->find(['cart_id=?', $cart->id]);

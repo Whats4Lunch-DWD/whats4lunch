@@ -29,7 +29,7 @@
                             {{ @cart_item->price * @cart_item->quantity }}
                         </div>
                         <div class="is-2 column">
-                            <a href="#"><img src="{{ @BASE }}/ui/images/delete.png" alt="Remove from Cart" /></a>
+                            <a href="{{ @BASE }}/cart/delete/{{ @cart_item->id }}"><img src="{{ @BASE }}/ui/images/delete.png" alt="Remove from Cart" /></a>
                         </div>
                     </div>
                 </repeat>

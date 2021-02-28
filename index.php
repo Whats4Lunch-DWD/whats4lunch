@@ -140,6 +140,15 @@ $f3->route('GET /cart/add/@id',
   }
 );
 
+// Show the Delete Cart page.
+$f3->route('GET /cart/delete/@id',
+  function ($f3, $args) {
+    $controller = new CartsController;
+    $data = $controller->delete($args['id']);
+    $f3->reroute('/cart');
+  }
+);
+
 
 // Show the Delete Cart page.
 $f3->route('GET /carts/delete',
