@@ -20,9 +20,11 @@ class CartsController {
         $cart_session = $this->mapper->find(["cart_session=?",$_SESSION["CART_SESSION"]]);
         $cart_items = null;
 
+        /*
         echo "cart session: ";
         print_r($cart_session); 
         die();
+        */
 
         if (count($cart_session)<1) {
             $this->addCart($_SESSION["CART_SESSION"]);
@@ -49,7 +51,7 @@ class CartsController {
         $this->cart_items_mapper["cart_id"] = $cart_session["id"];
         $this->cart_items_mapper["quantity"]+=1;
 
-        /*
+        
         echo "<pre>";
         print_r($this->cart_items_mapper["id"]);
         echo "<br />";
@@ -57,7 +59,7 @@ class CartsController {
         echo "</pre>";
 
         die();
-        */
+        
 
         $this->cart_items_mapper->save();
     }
