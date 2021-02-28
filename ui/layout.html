@@ -19,7 +19,12 @@
                <div class="navbar-brand">
                   <a class="navbar-item" href="{{@BASE}}"><img src="{{@BASE}}/ui/images/logo.png" /></a>
                </div>
-               <div class="navbar-menu">
+               <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mynav">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+               <div id="mynav" class="navbar-menu">
                   <div class="navbar-end">
                      <a class="navbar-item" href="{{@BASE}}/about/">About</a>
                      <a class="navbar-item" href="{{@BASE}}/restaurants/">Restaurants</a>
