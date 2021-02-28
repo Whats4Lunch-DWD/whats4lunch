@@ -58,6 +58,7 @@
             <div class="payment column is-one-third">
                 <h3>Payment</h3>
                 <p>Payment Method: Cash</p>
+                <input name="payment_method" type="hidden" value="cash" />
                 <!-- TODO
                 <p>Credit Card  Cash</p>
                 <p>Card Number:</p>
@@ -127,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="column"></div>
+            <div class="column"><input name="cart_id" type="hidden" value="{{ @cart_item->id }}" /></div>
         </div>
 
     </div>
