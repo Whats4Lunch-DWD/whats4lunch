@@ -163,7 +163,7 @@ $f3->route('GET /transactions/@id',
   function ($f3, $args) {
     $controller = new TransactionsController;
     $data = $controller->getTransaction($args['id']);
-    $f3->set('transaction',$data);
+    $f3->set('transaction_cart_items',$data);
     $f3->set('html_title','Transaction - Whats4Lunch - The World\'s easiest Food Delivery for people with diets and allergies');
     $f3->set('content','transactions/show.html');
     echo Template::instance()->render('layout.html');

@@ -36,7 +36,9 @@ class TransactionsController {
 
     public function getTransaction($id) {
         $transaction = $this->mapper->load(["id=?",$id]);
-        return $transaction;
+        $cart_items = $this->mapper->load(["cart_id=?",$transaction["cart_id"]]);
+        $transaction_cart_items = array("transaction"=>$transaction,"cart_items"=>$cart_items);
+        return $transaction_cart_items;
     }
 
 }
