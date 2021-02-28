@@ -41,8 +41,6 @@ class CartsController {
         }
 
         $this->cart_items_mapper->save();
-
-        $f3->reroute("/cart");
     }
 
     public function addCart($data) {
