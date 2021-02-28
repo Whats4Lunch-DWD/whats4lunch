@@ -20,6 +20,8 @@ class CartsController {
         $cart_session = $this->mapper->find(["cart_session=?",$_SESSION["CART_SESSION"]]);
         $cart_items = null;
 
+        echo "cart session: ".$cart_session; die();
+
         if (count($cart_session)<1) {
             $this->addCart($_SESSION["CART_SESSION"]);
         } else {
