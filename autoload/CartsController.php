@@ -40,6 +40,7 @@ class CartsController {
         echo "<pre>"; print_r($cart_items); echo "</pre>";
         echo "menu_id from cart_items: ".$cart_items[0]["menu_id"]."<br />";
         echo "id from add function: ".$id."<br />";
+        die();
 
         if ($cart_items[0]["menu_id"] != $id) {
             foreach ($menu_item as $item_key => $item_value) {
