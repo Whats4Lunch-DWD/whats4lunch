@@ -45,6 +45,7 @@ class CartsController {
         $this->cart_items_mapper["cart_id"] = $cart_session["id"];
         $this->cart_items_mapper["quantity"]+=1;
 
+        /*
         echo "<pre>";
         print_r($this->cart_items_mapper["id"]);
         echo "<br />";
@@ -52,8 +53,9 @@ class CartsController {
         echo "</pre>";
 
         die();
+        */
 
-        //$this->cart_items_mapper->save();
+        $this->cart_items_mapper->save();
     }
 
     public function addCart($data) {
