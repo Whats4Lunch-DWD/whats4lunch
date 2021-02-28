@@ -20,6 +20,7 @@ $f3->get('DB')->exec("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZER
 $f3->set('DEBUG',3);		// set maximum debug level
 $f3->set('UI','ui/');		// folder for View templates
 
+$basket = new \Basket();
 
   /////////////////////////////////////////////
  // Simple Example URL application routings //
@@ -193,7 +194,7 @@ $f3->route('GET /cart',
   }
 );
 
-/*
+
 // Todo. Create cartscontroller and update the front controller.
 // Show the List Carts page.
 $f3->route('GET /carts',
@@ -288,7 +289,7 @@ $f3->route('GET /cart_items',
     echo Template::instance()->render('layout.html');
   }
 );
-*/
+
 
 
 $f3->route('GET /sign-in',

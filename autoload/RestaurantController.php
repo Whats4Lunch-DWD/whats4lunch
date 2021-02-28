@@ -8,6 +8,7 @@ class RestaurantController {
 
 	public function __construct() {
 		global $f3;
+		global $basket;
 
 		$this->mapper = new DB\SQL\Mapper($f3->get('DB'),"restaurants");	// create DB query mapper object
 																			// for the "restaurants" table
@@ -31,7 +32,7 @@ class RestaurantController {
 		$restaurant = $this->mapper->load(['id=?', $id]);
 		$menu = $this->menus_mapper->find(['restaurant_id=?', $id]);
 		$total_menu_items = count($menu);
-		
+
 		$restaurant_menu = array("restaurant"=>$restaurant, "menu"=>$menu, "total_menu_items"=>$total_menu_items);
 		return $restaurant_menu;
 	}
