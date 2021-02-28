@@ -97,8 +97,12 @@ div.is-left > p {
     text-align: left;
 }
 
+.cart, .payment, .delivery-address {
+    background-color: #fff;
+}
+
 .cart > *, .payment > *, .delivery-address > * {
-    text-align: left;
+    text-align: left !important;
 }
 
 footer.footer {
