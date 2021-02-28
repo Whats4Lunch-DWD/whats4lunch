@@ -28,7 +28,7 @@ class CartsController {
         foreach ($menu_item as $item_key => $item_value) {
             echo $item_key."=>".$item_value."<br />";
             
-            $basket->set("$item_key",$item_value);
+            $basket->set("$item_key","$item_value");
         }
         $basket->set("quantity",1);
 
