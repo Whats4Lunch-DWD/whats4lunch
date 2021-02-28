@@ -21,14 +21,14 @@ class CartsController {
         $cart_items = null;
 
         echo "php session cart session: ".$_SESSION["CART_SESSION"]."<br />";
-        echo "cart session: ".$cart_session->id;
+        echo "cart session: ".$cart_session["id"];
         //die();
         
 
         if (count($cart_session)<1) {
             $this->addCart($_SESSION["CART_SESSION"]);
         } else {
-            $cart_items = $this->cart_items_mapper->find(["cart_id=?", $cart_session->id]);
+            $cart_items = $this->cart_items_mapper->find(["cart_id=?", $cart_session["id"]]);
         }
         
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
@@ -47,7 +47,7 @@ class CartsController {
             }   
         }
 
-        $this->cart_items_mapper["cart_id"] = $cart_session->id;
+        $this->cart_items_mapper["cart_id"] = $cart_session["id"];
         $this->cart_items_mapper["quantity"]+=1;
 
         
