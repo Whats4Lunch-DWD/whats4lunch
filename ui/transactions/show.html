@@ -66,6 +66,12 @@
                             {{ @transaction_cart_items.transaction->total_price+3 }}
                         </div>
                     </div>
+                    <div class="columns payment-method">
+                        {{ @transaction_cart_items.transaction->payment_method }}
+                    </div>
+                    <div class="columns delivery-location">
+                        {{ @transaction_cart_items.transaction->address1 }} {{ @transaction_cart_items.transaction->address2 }} {{ @transaction_cart_items.transaction->postal_code }}
+                    </div>
                 </div>
             </div>
     </div>
