@@ -38,9 +38,10 @@ class CartsController {
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
         //echo "cart session: ".$_SESSION["CART_SESSION"]."<br />";
         //echo "<pre>"; print_r($cart_items); echo "</pre>";
-        //echo "menu_id from cart_items: ".$cart_items[0]["menu_id"]."<br />";
-        //echo "id from add function: ".$id."<br />";
-        //die();
+        echo "cart item id: ".$cart_items[0]["id"]."<br />";
+        echo "menu_id from cart_items: ".$cart_items[0]["menu_id"]."<br />";
+        echo "id from add function: ".$id."<br />";
+        die();
 
         if ($cart_items[0]["menu_id"] != $id) {
             foreach ($menu_item as $item_key => $item_value) {
