@@ -32,7 +32,7 @@ class CartsController {
         if (count($cart_session)<1) {
             $this->addCart($_SESSION["CART_SESSION"]);
         } else {
-            $cart_items = $this->cart_items_mapper->load(["cart_id=?", $cart_session[0]["id"]]);
+            $cart_items = $this->cart_items_mapper->find(["cart_id=?", $cart_session[0]["id"]]);
         }
         
         $menu_item = $this->menus_mapper->load(['id=?', $id]);
@@ -41,8 +41,7 @@ class CartsController {
         //echo "menu_id from cart_items: ".$cart_items[0]["menu_id"]."<br />";
         //echo "id from add function: ".$id."<br />";
 
-        if ($cart_items["menu_id"] != $id) {
-            $cart_items=null;
+        if ($cart_items[0]["menu_id"] != $id) {
             foreach ($menu_item as $item_key => $item_value) {
                 //echo $item_key."=>".$item_value."<br />";
                 if ($item_key != "created_at" ) {
@@ -57,10 +56,12 @@ class CartsController {
 
             //$this->cart_items_mapper["id"]=null; // so that the mapper is dry.
         } else {
-            if ($cart_items["id"]>0) {
-                $this->cart_items_mapper["id"]=$cart_items["id"];
+            // hydrate the cart
+            $hydrated_cart_item = $this->cart_items_mapper->load(["cart_id=?", $cart_session[0]["id"]]);
+            if ($hydrated_cart_item["id"]>0) {
+                $this->cart_items_mapper["id"]=$hydrated_cart_item["id"];
             }
-            $this->cart_items_mapper["quantity"]=$cart_items["quantity"]+1;
+            $this->cart_items_mapper["quantity"]=$hydrated_cart_item["quantity"]+1;
         }
 
         $this->cart_items_mapper["cart_id"] = $cart_session[0]["id"];
